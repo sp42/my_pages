@@ -1,0 +1,116 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #606c71;
+}
+
+menu,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+    letter-spacing: 2px;
+}
+
+a:hover {
+    color: black;
+    letter-spacing: 4px;
+}
+
+nav {
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    height: 80px;
+}
+
+nav>div {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav h1,
+nav h3 {
+    display: inline-block;
+}
+
+nav h1 {
+    font-size: 25px;
+}
+
+nav h3 {
+    padding-left: 2%;
+    font-weight: normal;
+    color: gray;
+}
+
+body>div {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.links {
+    float: right;
+    line-height: 80px;
+    font-size: 16px;
+}
+
+menu {
+    width: 20%;
+    float: left;
+    padding-top: 5%;
+}
+
+iframe {
+    border: 0;
+    width: 79%;
+    height: 100%;
+}
+
+menu h3 {
+    margin: 10px 0;
+    color: #666;
+    position: relative;
+    padding-left: 20px;
+    font-size: 102%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+menu h3::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #666;
+    border-radius: 50%;
+    position: absolute;
+    top: 7px;
+    left: 0;
+}
+
+menu ul {
+    padding: 5px 15px;
+    border-left: 2px solid #ddd;
+    margin-left: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+menu ul li {
+    list-style: none;
+}

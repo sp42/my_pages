@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>数据服务 DataService</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="asset/main.css" />
+    <link rel="icon" type="image/x-icon" href="asset/favicon.ico" />
+    <script>
+        function resizeIframe() {
+            var iframe = document.getElementById('iframe');
+            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+        }
+
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <div class="links">
+                <a target="iframe" href="pages/home.html">🏠 首页</a> |
+                ⚙️ 源码：
+                <a target="_blank" href="https://github.com/sp42/ajaxjs">Github</a>/<a target="_blank"
+                    href="https://gitee.com/sp42_admin/ajaxjs">Gitee</a> |
+                <a target="iframe" href="pages/contact.html">✉️ 联系</a>
+            </div>
+            <h1><img src="asset/icon.png" style="vertical-align: middle;height: 35px;margin-bottom: 6px;" /> 数据服务
+                DataService </h1>
+            <h3>一站式快速 CRUD 服务</h3>
+        </div>
+    </nav>
+
+    <div>
+        <menu>
+            <h3>数据服务简介</h3>
+            <ul>
+                <li><a target="iframe" href="pages/home.html#intro">简介</a></li>
+                <li><a target="iframe" href="pages/home.html#point">特点</a></li>
+                <li><a target="iframe" href="pages/home.html#start">缘起</a></li>
+            </ul>
+            <h3>安装</h3>
+            <ul>
+                <li><a target="iframe" href="pages/install.html">系统要求</a></li>
+                <li><a target="iframe" href="pages/install.html#download">下载与源码</a></li>
+                <li><a target="iframe" href="pages/install.html#install">安装</a></li>
+            </ul>
+            <h3>使用操作入门</h3>
+            <ul>
+                <li><a target="iframe" href="pages/learn.html#concept">基本概念</a></li>
+                <li><a target="iframe" href="pages/learn.html#start">特点</a></li>
+            </ul>
+            <h3>版本发布说明</h3>
+            <ul>
+                <li><a target="iframe" href="pages/release_history.html">版本发布说明</a></li>
+            </ul>
+        </menu>
+        <iframe id="iframe" name="iframe" src="pages/install.html" onload="resizeIframe()" />
+    </div>
+    <footer></footer>
+</body>
+
+</html>

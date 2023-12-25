@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>数据服务 DataService</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../asset/inner.css" />
+    <script src="../js/inner.js"></script>
+</head>
+
+<body>
+    <h1>🔧 安装</h1>
+    <section>
+        <a name="intro"></a>
+        <h2>系统要求</h2>
+        <ul>
+            <li>Java 8 及以上</li>
+            <li>MySQL 8 及以上，当前配置只支持 MySQL 数据库，但 SQL 执行的数据不限 MySQL</li>
+            <li>Spring 5.0 及以上</li>
+            <li>轻量级设计，对系统要求低，单核/512MB RAM 即可运行服务</li>
+        </ul>
+    </section>
+
+    <section>
+        <a name="download"></a>
+        <h2>下载与源码</h2>
+        <p>数据服务依赖于 <a href="https://framework.ajaxjs.com" target="_blank">AJ 框架</a>，严格来说它是该框架下的一个组件，故引入 AJ 相关依赖即可。AJ
+            框架足够轻量级，包括依赖包在内的 JAR 包约 200 多kb。</p>
+
+        <p>
+            <a href="https://search.maven.org/artifact/com.ajaxjs/ajaxjs-framework" target="_blank">
+                <img src="https://img.shields.io/maven-central/v/com.ajaxjs/ajaxjs-framework?label=Latest%20Release"
+                    alt="最新版本" />
+            </a>
+        </p>
+
+        <pre class="code xml-code"><!-- AJ 框架 -->
+<dependency>
+    <groupId>com.ajaxjs</groupId>
+    <artifactId>ajaxjs-framework</artifactId>
+    <version>1.1.8</version>
+</dependency></pre>
+
+        <p>源码： <a target="_blank" href="https://github.com/sp42/ajaxjs">https://github.com/sp42/ajaxjs</a> | <a
+                target="_blank" href="https://gitee.com/sp42_admin/ajaxjs">https://gitee.com/sp42_admin/ajaxjs</a></p>
+        <p>Apache License Version--2.0. Free to use, modify.</p>
+
+    </section>
+
+    <section>
+        <a name="install"></a>
+        <h2>安装</h2>
+
+        <h3>初始化数据</h3>
+        <p>数据服务依赖两张表 ds_common_api 和 ds_project 作为配置数据表。执行创建表的 DDL：</p>
+        <pre class="code sql-ddl-code">CREATE TABLE `ds_common_api` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT COMMENT '主键 id，自增',
+    `pid` INT(10) NULL DEFAULT '-1' COMMENT '父节点 id，如果是顶级节点为 -1 或者空',
+    `name` VARCHAR(90) NULL DEFAULT NULL COMMENT '说明',
+    `namespace` VARCHAR(50) NOT NULL COMMENT '命名空间，标识',
+    `table_name` VARCHAR(45) NULL DEFAULT NULL COMMENT '表名',
+    `type` VARCHAR(10) NULL DEFAULT NULL COMMENT '类型 SINGLE | CRUD',
+    `clz_name` VARCHAR(10) NULL DEFAULT NULL COMMENT '实体类引用名称',
+    `id_field` VARCHAR(10) NULL DEFAULT 'id' COMMENT '主键字段名称',
+    `sql` TEXT NULL DEFAULT NULL COMMENT '单条 SQL 命令',
+    `info_sql` TEXT NULL DEFAULT NULL COMMENT '查询详情的 SQL（可选的）',
+    `list_sql` TEXT NULL DEFAULT NULL COMMENT '查询列表的 SQL（可选的）',
+    `create_sql` TEXT NULL DEFAULT NULL COMMENT '创建的 SQL（可选的）',
+    `update_sql` TEXT NULL DEFAULT NULL COMMENT '修改的 SQL（可选的）',
+    `delete_sql` TEXT NULL DEFAULT NULL COMMENT '删除的 SQL（可选的）',
+    `del_field` VARCHAR(100) NULL DEFAULT 'stat' COMMENT '删除字段名称',
+    `has_is_deleted` TINYINT(1) NULL DEFAULT '1' COMMENT '是否有逻辑删除标记',
+    `tenant_isolation` TINYINT(3) UNSIGNED NULL DEFAULT NULL COMMENT '是否加入租户数据隔离',
+    `id_type` TINYINT(3) UNSIGNED NULL DEFAULT NULL COMMENT '1=自增；2=雪花；3=UUID',
+    `stat` TINYINT(3) UNSIGNED NULL DEFAULT '0' COMMENT '数据字典：状态',
+    `creator` VARCHAR(50) NULL DEFAULT NULL COMMENT '创建人名称（可冗余的）' ,
+    `creator_id` INT(10) NULL DEFAULT NULL COMMENT '创建人 id',
+    `create_date` DATETIME NOT NULL DEFAULT (now()) COMMENT '创建日期',
+    `updater` VARCHAR(50) NULL DEFAULT NULL COMMENT '修改人名称（可冗余的）',
+    `updater_id` INT(10) NULL DEFAULT NULL COMMENT '修改人 id',
+    `update_date` DATETIME NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP COMMENT '修改日期',
+    PRIMARY KEY (`id`) USING BTREE,
+    UNIQUE INDEX `id_UNIQUE` (`id`) USING BTREE
+)
+COMMENT='通用万能型 API 接口的配置'
+COLLATE='utf8mb4_unicode_ci'</pre>
+    </section>
+
+    <pre class="code sql-ddl-code">CREATE TABLE `ds_project` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT COMMENT '主键 id，自增',
+    `datasource_id` INT(10) NULL DEFAULT NULL COMMENT '数据源 id',
+    `name` VARCHAR(90) NULL DEFAULT NULL COMMENT '说明',
+    `api_prefix_dev` VARCHAR(100) NULL DEFAULT NULL COMMENT 'API 前缀（开发阶段）',
+    `api_prefix_prod` VARCHAR(100) NULL DEFAULT NULL COMMENT 'API 前缀（生产环境）',
+    `default_config` JSON NULL DEFAULT NULL COMMENT '默认配置',
+    `stat` TINYINT(3) UNSIGNED NULL DEFAULT '0' COMMENT '数据字典：状态',
+    `creator` VARCHAR(50) NULL DEFAULT NULL COMMENT '创建人名称（可冗余的）',
+    `creator_id` INT(10) NULL DEFAULT NULL COMMENT '创建人 id',
+    `create_date` DATETIME NOT NULL DEFAULT (now()) COMMENT '创建日期',
+    `updater` VARCHAR(50) NULL DEFAULT NULL COMMENT '修改人名称（可冗余的）',
+    `updater_id` INT(10) NULL DEFAULT NULL COMMENT '修改人 id',
+    `update_date` DATETIME NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP COMMENT '修改日期',
+    PRIMARY KEY (`id`) USING BTREE,
+    UNIQUE INDEX `id_UNIQUE` (`id`) USING BTREE
+)
+COMMENT='项目'</pre>
+    <p>插入两笔新的数据，读取配置。</p>
+    <pre class="code sql-code">INSERT INTO `ds_common_api` (`id`, `pid`, `name`, `namespace`, `table_name`, `type`, `clz_name`, `id_field`, `sql`, 
+`info_sql`, `list_sql`, `create_sql`, `update_sql`, `delete_sql`, `del_field`, `has_is_deleted`, `tenant_isolation`, `id_type`, `stat`) 
+VALUES (1, -1, '工程', 'project', 'ds_project', NULL, NULL, 'id', NULL, NULL, NULL, NULL, NULL, NULL, 'stat', 1, NULL, NULL, 0);
+
+INSERT INTO `ds_common_api` (`id`, `pid`, `name`, `namespace`, `type`, `table_name`, `clz_name`, `id_field`, `sql`, 
+`info_sql`, `list_sql`, `create_sql`, `update_sql`, `delete_sql`, `del_field`, `has_is_deleted`, `tenant_isolation`, `id_type`, `stat`) 
+VALUES (5, -1, 'common_api', 'common_api', '', 'common_api', NULL, 'id', NULL, NULL, 'SELECT \r\n	(SELECT JSON_ARRAYAGG(JSON_OBJECT(\r\n                  
+\'id\', id, \'pid\', pid, \'name\', name, \'namespace\', namespace, \'tableName\', table_name, \'idField\', id_field,\r\n                  
+\'className\', clz_name, \'delField\', del_field, \'sql\', `sql`, \'infoSql\', info_sql, \'listSql\', list_sql, \'type\', type,\r\n                  
+\'createSql\', create_sql, \'updateSql\', update_sql, \'deleteSql\', delete_sql, \'hasIsDeleted\',\r\n                   
+CAST(has_is_deleted = 1 AS JSON), \'tenantIsolation\', tenant_isolation, \'idType\', id_type, \'stat\', stat, \'creator\', creator,\r\n                  
+\'creatorId\', creator_id, \'createDate\', create_date, \'updater\', updater,\r\n                 
+ \'updaterId\', updater_id, \'updateDate\', update_date\r\n	)) FROM ds_common_api WHERE stat != 1 AND pid = a.id) AS children,\r\n	
+ a.*\r\n FROM ds_common_api a WHERE a.stat != 1 AND (pid IS NULL OR pid = -1)', NULL, NULL, NULL, 'stat', 1, NULL, NULL, 0);</pre>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+html,
+body {
+
+    overflow: hidden;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #606c71;
+}
+
+
+a {
+    /*  text-decoration: none; */
+    color: gray;
+    letter-spacing: 2px;
+}
+
+a:hover {
+    color: black;
+    letter-spacing: 4px;
+}
+
+h1 {
+    color: #555;
+    font-size: 25px;
+    font-weight: normal;
+    padding: 20px 0;
+    border-bottom: 1px dashed #ccc;
+    letter-spacing: 3px;
+}
+
+h2 {
+    letter-spacing: 2px;
+    padding-bottom: 2%;
+    margin-top: 6%;
+    border-bottom: 1px dotted #ccc;
+}
+
+h3 {
+    margin-left: 1.5em;
+}
+
+img.content {
+    display: block;
+    margin: 5% auto;
+    max-width: 90%;
+}
+
+li {
+    margin-bottom: 2%;
+}
+
+p {
+    margin-bottom: 3%;
+    text-indent: 2em;
+    text-align: justify;
+    line-height: 160%;
+    padding-right: 1%;
+    letter-spacing: 1px;
+}
+
+.xml-tag,
+.sql-ddl-keyword {
+    color: goldenrod;
+}
+
+.xml-attribute,
+.sql-field {
+    color: rgb(247, 138, 138);
+}
+
+.xml-string,
+.code-string {
+    color: green;
+}
+
+.xml-comment {
+    color: gray;
+}
+
+.code {
+    border: 1px solid #eee;
+    border-left-width: 3px;
+    padding: 1% 2%;
+    background-color: #fbfbfb;
+    font-family: math;
+}
