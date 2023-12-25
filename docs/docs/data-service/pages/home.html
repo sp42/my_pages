@@ -23,7 +23,7 @@
         <p>Java 企业级开发中，要写 Model、DAO、Service 和 Controller 代码是一件非常繁琐的事情，里面存在着大量的重复工作，DataService
             就是为了解决这个问题而生的。按照业务复杂程度的递进，可分为以下三种 DataService 的应用模式：
         <ul>
-            <li>大量的基础数据。这类数据表的特点是没什么或少量常见的业务逻辑，采用 DataService 创建 CRUD 服务即可完成。</li>
+            <li>大量的基础数据。这类数据表的特点是没什么或少量常见的业务逻辑，采用 DataService 创建通用的 CRUD 服务即可完成。</li>
             <li>自定义的业务逻辑，并非简单的 CRUD，但通过 SQL 仍能实现，不用额外写 Java 的业务代码，尤其适用于 BI 报表、数据可视化大屏的后端接口开发。</li>
             <li>复杂的业务逻辑，需 Java+SQL 协力完成。这时 DataService 仍能作为一种 ORM 机制出现，相当于一个 Data Access Object，返回 Java Bean 实体。</li>
         </ul>

@@ -59,7 +59,6 @@ nav h3 {
 body>div {
     max-width: 1200px;
     margin: 0 auto;
-    height: 100%;
 }
 
 .links {
@@ -71,6 +70,7 @@ body>div {
 menu {
     width: 20%;
     float: left;
+    margin-bottom: 5%;
     padding-top: 5%;
 }
 
@@ -113,4 +113,15 @@ menu ul {
 
 menu ul li {
     list-style: none;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    height: 100px;
+    width: 100%;
+    color: gray;
+    border-top: 1px solid lightgray;
+    padding-top: 2%;
+    margin-top: 5%;
 }

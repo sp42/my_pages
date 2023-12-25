@@ -83,10 +83,38 @@ p {
     color: gray;
 }
 
+
+.code,
+.c {
+    font-family: math, "Source Code Pro", Monaco, Menlo, Consolas, monospace;
+    font-size: 16px;
+}
+
+.c {
+    background-color: #eee;
+    color: cadetblue;
+    padding: 3px 8px;
+}
+
 .code {
     border: 1px solid #eee;
     border-left-width: 3px;
     padding: 1% 2%;
     background-color: #fbfbfb;
-    font-family: math;
+
+}
+
+table {
+    text-align: center;
+    width: 80%;
+    border: 1px solid lightgray;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid lightgray;
+    padding: 1%;
+    min-width: 185px;
 }

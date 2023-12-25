@@ -3,9 +3,9 @@ window.addEventListener('resize', function () {
 });
 
 
-var tagRegex = /&lt;([^&]+)&gt;/g;
-var attributeRegex = /(\w+)\s*=\s*["']([^"']*)["']/g;
-var getValue = /\="([^"]*)"/;
+const tagRegex = /&lt;([^&]+)&gt;/g;
+const attributeRegex = /(\w+)\s*=\s*["']([^"']*)["']/g;
+const getValue = /\="([^"]*)"/;
 
 function matchAttrib(_m) {
     _m = _m.replace(getValue, '=<span class="xml-string">"$1"</span>');
@@ -24,7 +24,7 @@ function match1(match, b, c) {
 }
 
 // SQL DDL 关键字
-var ddlKeywords = [
+const ddlKeywords = [
     "CREATE",
     "TABLE",
     "PRIMARY",
@@ -37,7 +37,7 @@ var ddlKeywords = [
 ];
 
 // SQL 关键字
-var sqlKeywords = [
+const sqlKeywords = [
     "SELECT",
     "FROM",
     "WHERE",
@@ -72,7 +72,7 @@ function highlightDDLKeywords(text, isSqlDDL) {
 const matchString = /'[^']*'/g;
 const matchSqlField = /`[^`]*`/g;
 
-function highlightXML() {
+function highlightCode() {
     var codeElement = document.querySelectorAll('.xml-code');
 
     codeElement && codeElement.length && codeElement.forEach(item => {
@@ -105,5 +105,5 @@ function highlightXML() {
     });
 }
 
-// 页面加载完成后，调用 highlightXML 函数
-window.onload = highlightXML;
+// 页面加载完成后，调用 highlightCode 函数
+window.onload = highlightCode;
