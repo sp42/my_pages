@@ -8,17 +8,17 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../asset/inner.css" />
-    <script src="../js/inner.js"></script>
+    <link rel="stylesheet" href="../../common/inner.css" />
+    <script src="../../common/js/inner.js"></script>
 </head>
 
 <body>
     <h1>📃 使用操作入门</h1>
     <section>
         <h2>基本概念</h2>
-        <p style="font-style: italic;">前言: DataSerivce 务求一切操作简单化，不创造过多概念，但一些前提的概念是必须的，——请放心，只要你是个 CRUD Boy 就会觉得很简单：）</p>
+        <p style="font-style: italic;">前言: DataSerivce 务求一切操作简单化，不创造过多概念，但一些前提的概念是必须的，——请放心，只要你是个 CRUD Boy 便会觉得很简单：）</p>
         <h3>命名空间 Namespace</h3>
-        <p>DataService 中的一个服务就是可配置的最基础单元，“命名空间 Namespace”是其名字。不确切地说，它相当于 SQL 中的一张表，
+        <p>DataService 中的一个服务就是可配置的最基础单元，“命名空间 Namespace”表示其名字，也是构成 HTTP API URL 上面的一部分。不确切地说，它相对应于 SQL 中的一张表，
             当然这种类比不是强耦合的，例如：
         <ul>
             <li>如果你选择的是自定义 SQL，那么这个命名空间仅仅是名字而已，跟具体哪张表没有确切联系，——因为你全写在 SQL 了，爱怎么样怎么样；</li>
@@ -101,8 +101,10 @@
         </table>
 
         <p>
-            DataService 各项功能围绕 CRUD 展开，采用约定好的固定搭配请求服务，假设 <span class="c">/common_api</span> 为数据服务专属的 API 前缀、
-            <span class="c">foo</span> 为命名空间，则有以下固定的请求操作。
+            DataService 各项功能围绕 CRUD 展开，上述的“SQL 命令”与“DataService 操作”两部分，不仅提供默认通用的 CRUD 操作，而且如果不满足的话，还可以自定义 SQL 逻辑（下小节详述）。
+            
+            不论哪种方式，均采用约定好的固定搭配请求服务，假设<span class="c">/common_api</span>为数据服务的专属 API 前缀、
+            <span class="c">foo</span>为命名空间，则有以下固定的请求操作。
         </p>
 
         <ul>

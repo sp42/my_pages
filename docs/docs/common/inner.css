@@ -17,7 +17,6 @@ body {
 a {
     /*  text-decoration: none; */
     color: gray;
-    letter-spacing: 2px;
 }
 
 a:hover {
@@ -86,14 +85,14 @@ p {
 
 .code,
 .c {
-    font-family: math, "Source Code Pro", Monaco, Menlo, Consolas, monospace;
+    font-family: "Liberation Serif", "DejaVu serif", "Source Code Pro", Monaco, Menlo, Consolas, monospace;
     font-size: 16px;
 }
 
 .c {
     background-color: #eee;
     color: cadetblue;
-    padding: 3px 8px;
+    padding: 2px 6px;
 }
 
 .code {
@@ -101,7 +100,6 @@ p {
     border-left-width: 3px;
     padding: 1% 2%;
     background-color: #fbfbfb;
-
 }
 
 table {
