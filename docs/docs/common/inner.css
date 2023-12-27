@@ -13,15 +13,14 @@ body {
     color: #606c71;
 }
 
-
 a {
     /*  text-decoration: none; */
     color: gray;
+    word-break: break-all;
 }
 
 a:hover {
     color: black;
-    letter-spacing: 4px;
 }
 
 h1 {
@@ -64,42 +63,59 @@ p {
 }
 
 .xml-tag,
+.js-keyword,
+.java-keyword,
+.yaml-keyword,
 .sql-ddl-keyword {
     color: goldenrod;
 }
 
 .xml-attribute,
+.java-anno,
+.yaml-value,
 .sql-field {
     color: rgb(247, 138, 138);
 }
 
 .xml-string,
+.yaml-string,
 .code-string {
     color: green;
 }
 
+.yaml-comment,
 .xml-comment {
     color: gray;
 }
 
-
 .code,
+code,
 .c {
     font-family: "Liberation Serif", "DejaVu serif", "Source Code Pro", Monaco, Menlo, Consolas, monospace;
     font-size: 16px;
 }
 
-.c {
+.c,
+code {
     background-color: #eee;
     color: cadetblue;
-    padding: 2px 6px;
+    padding: 2px 5px;
+    word-break: break-all;
 }
 
 .code {
     border: 1px solid #eee;
     border-left-width: 3px;
     padding: 1% 2%;
-    background-color: #fbfbfb;
+    background: linear-gradient(to right, rgba(251, 251, 251, 1), rgba(251, 251, 251, 0));
+    width: 90%;
+}
+
+.ref {
+    border-left: 3px solid #eee;
+    padding: 1% 2%;
+    margin-left: 10px;
+    color: gray;
 }
 
 table {
@@ -115,4 +131,34 @@ th {
     border: 1px solid lightgray;
     padding: 1%;
     min-width: 185px;
+}
+
+.external-link {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+    border: 2px solid gray;
+    position: relative;
+    margin: 0 5px;
+}
+
+.external-link::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+}
+
+.external-link span {
+    position: absolute;
+    display: block;
+    text-indent: 0;
+    top: -11px;
+    left: 0px;
+    font-weight: bold;
+    font-size: 18px;
 }

@@ -113,6 +113,7 @@ menu ul {
 
 menu ul li {
     list-style: none;
+    margin-bottom: 5px;
 }
 
 footer {
