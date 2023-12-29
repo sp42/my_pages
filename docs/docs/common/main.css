@@ -116,6 +116,15 @@ menu ul li {
     margin-bottom: 5px;
 }
 
+menu ul li.selected {
+    font-weight: bold;
+
+}
+
+menu ul li.selected a {
+    color: #10af88;
+}
+
 footer {
     clear: both;
     text-align: center;
