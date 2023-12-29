@@ -1,6 +1,6 @@
 function resizeIframe() {
     var iframe = document.getElementById('iframe');
-    iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    iframe.style.height = (iframe.contentWindow.document.body.scrollHeight + 50) + 'px';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,4 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
         selected && selected.classList.remove('selected');
         el.classList.add('selected');
     };
+
+    let footer = `
+    <div>AJ-Framework 家族项目：<br /><a target="_blank" href="../aj/">AJ-Framework 基础框架库</a> | <a target="_blank" href="../data-service/">数据服务 DataService 一站式快速 CRUD 服务 </a> |
+        <a target="_blank" href="../iam/">AJ-IAM 轻量级 OIDC 用户认证系统</a>  |
+        <a target="_blank" href="../workflow/">AJ-Workflow 轻量级工作流引擎</a>  
+       <!--  | <a target="_blank" href="../base/">AJ-Base 常见的业务封装</a> -->
+    </div>
+    <br />
+    Copyright © 2023 Frank Cheung. All Rights Reserved.
+`;
+    let temp = document.createElement('footer');
+    temp.innerHTML = footer;
+    document.querySelector('body>div').appendChild(temp);
 });

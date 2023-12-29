@@ -9,13 +9,8 @@
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../common/main.css" />
-    <link rel="icon" type="image/x-icon" href="asset/favicon.ico" />
-    <script>
-        function resizeIframe() {
-            var iframe = document.getElementById('iframe');
-            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-        }
-    </script>
+   <!--  <link rel="icon" type="image/x-icon" href="asset/favicon.ico" /> -->
+    <script src="../common/index.js"></script>
 </head>
 
 <body>
@@ -55,12 +50,8 @@
                 <li><a target="iframe" href="pages/release_history.html">版本发布说明</a></li>
             </ul>
         </menu>
-        <iframe id="iframe" name="iframe" src="pages/home.html" onload="resizeIframe()"></iframe>
+        <iframe id="iframe" name="iframe" scrolling="no" src="pages/home.html" onload="resizeIframe()"></iframe>
     </div>
-
-    <footer>
-        Copyright © 2023 Frank Cheung. All Rights Reserved.
-    </footer>
 </body>
 
 </html>
