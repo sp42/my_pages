@@ -162,3 +162,14 @@ th {
     font-weight: bold;
     font-size: 18px;
 }
+
+.trc_rbox_container {
+    display: none;
+}
+
+.release-date {
+    color: lightgray;
+    font-size: 14px;
+    padding-left: 50px;
+    font-weight: normal;
+}

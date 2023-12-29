@@ -149,7 +149,29 @@ function highlightCode() {
 
         item.innerHTML = code;
     });
+
+
+
 }
 
 // 页面加载完成后，调用 highlightCode 函数
 document.addEventListener('DOMContentLoaded', highlightCode);
+
+document.addEventListener('DOMContentLoaded', () => {
+    let html = `<div id="lv-container" data-id="city" data-uid="MTAyMC80NDQ4OS8yMTAyMQ=="></div>`;
+    let div = document.createElement('div');
+    div.innerHTML = html;
+    document.querySelector('body').appendChild(div);
+
+    (function (d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') { return; }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+});

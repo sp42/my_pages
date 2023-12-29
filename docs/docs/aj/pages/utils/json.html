@@ -18,6 +18,16 @@
         文本到底是如何被解析成为 Java
         里面“可以理解的”对象的。前面的铺垫可能比较长，但请尽量不要跳过，因为那都是基础，尤其对于我们非科班来说，应要恶补。当然，为照顾大家的理解程度（包括我自己，我也会以后回看自己的代码，以此反复理解、反复消化），我会把代码写多点注释，把代码可读性提高那么一点点，因为网上很多写解析器的大神都是从
         C 语言高手过来的，明显带有过程式的风格。因此我会重构这些代码，使得代码更 OO 一些，这样看起来也会紧凑一些，可读性高一些。</p>
+
+    <p>有关JSON 序列化/反序列化的详细分析，请移步至博客文章：
+        <span class="external-link">
+            <span>↗</span>
+        </span>
+        <a href="https://zhangxin.blog.csdn.net/article/details/77132093" target="_blank">
+            https://zhangxin.blog.csdn.net/article/details/77132093</a>、<a
+            href="https://zhangxin.blog.csdn.net/article/details/86688282" target="_blank">
+            https://zhangxin.blog.csdn.net/article/details/86688282</a>。
+    </p>
     <p>
         <a href="https://search.maven.org/artifact/com.ajaxjs/ajaxjs-framework" target="_blank">
             <img src="https://img.shields.io/maven-central/v/com.ajaxjs/ajaxjs-framework?label=Latest%20Release"
@@ -63,35 +73,7 @@ public class TestSlf4J {
 }        
 </pre>
 
-    <h2>原理分析</h2>
-    <p>有关原理的分析，请移步至博客文章：
-        <span class="external-link">
-            <span>↗</span>
-        </span>
-        <a href="https://zhangxin.blog.csdn.net/article/details/77132093" target="_blank">
-            https://zhangxin.blog.csdn.net/article/details/77132093</a>、<a
-            href="https://zhangxin.blog.csdn.net/article/details/86688282" target="_blank">
-            https://zhangxin.blog.csdn.net/article/details/86688282</a>。
-    </p>
-
-    <!-- LiveRe City install code -->
-    <div id="lv-container" data-id="city" data-uid="MTAyMC80NDQ4OS8yMTAyMQ==">
-        <script type="text/javascript">
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
-
-                if (typeof LivereTower === 'function') { return; }
-
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>Please activate JavaScript for write a comment in LiveRe</noscript>
-    </div>
-    <!-- completed City install code -->
+ 
 </body>
 
 </html>

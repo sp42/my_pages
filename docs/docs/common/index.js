@@ -27,5 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 `;
     let temp = document.createElement('footer');
     temp.innerHTML = footer;
-    document.querySelector('body>div').appendChild(temp);
+    let div = document.querySelector('body>div');
+    div.parentNode.insertBefore(temp, div.nextSibling);
 });
