@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -55,10 +54,28 @@ public class TestSlf4J {
     <img src="../../imgs/logger.png" />
 
     <h3>不使用 Slf4J</h3>
-    <p></p>
+    <p>传统方式创建 LOGGER 实例。</p>
+    <pre class="code java-code">import com.ajaxjs.util.logger.LogHelper;
+
+public class TestLogHelper {
+    // 创建类成员为日志服务
+    private static final LogHelper LOGGER = LogHelper.getLog(TestLogHelper.class);
+
+    public void testGetLog() {
+        // …… 其他代码
+        LOGGER.warning("发生异常！……");
+        LOGGER.info("bar");
+        LOGGER.warning("foo");
+        // 带有多个日志消息的对象参数，用 {0},{1},{2} 预留消息位置
+        LOGGER.warning("脚本引擎 {0} 没有 {1}() 这个方法", "js", "foo");
+        LOGGER.warning(new Exception("致命错误！"), "脚本引擎 {0} 没有 {1}() 这个方法", "js", "foo");
+    }
+}</pre>
+
+<!--     <p>LOGGER 本身也有一些静态方法的，使用比较简单，如
+        <code>LOGGER.infoYellow("执行 SQL--[" + DataUtils.printRealSql(sql, params) + "]");</code>。</p> -->
 
     <h2>日志保存文件</h2>
-    <p></p>
 
     <h3>ELK 日志输出</h3>
     <p>ELK 读取的日志为本地磁盘的一个 JSON 文件，我们只要配置好 JUL 的 Handler 和 Formatter 即可完成。</p>

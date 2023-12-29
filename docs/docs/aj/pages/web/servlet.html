@@ -34,7 +34,7 @@
     <div style="text-align: center;">
         <img src="../../imgs/web/1.webp" />
     </div>
-    <p>因为采用了 Jar 打包 jsp 分发的缘故，故所以你不能在 Eclipse 里面按 Ctrl 键打开 head.jsp，最好的方法是关闭 IDE 验证的错误提示。</p>
+    <p>因为采用了 Jar 打包 jsp 分发的缘故，故所以你不能在 IDEA/Eclipse 里面按 Ctrl 键打开 head.jsp，最好的方法是关闭 IDE 验证的错误提示。</p>
 
     <h2>EL 表达式</h2>
     <p>EL 表达式 <code>${param.xxx}</code><br>
@@ -44,13 +44,13 @@
     <p>EL 表达式 <code>${requestScope['javax.servlet.forward.request_uri']}</code><br>
         含义：获取原请求的uri，而非模版所在的uri</p>
     <p>EL 表达式：<code>${viewUtils.formatDateShorter(current.createDate)}</code><br>
-        含义：调用Java方法并传参，例子viewUtils系传入到页面的对象，之前已经通过request.setAttribute()将其设置于页面的上下文中</p>
+        含义：调用Java方法并传参，例子viewUtils系传入到页面的对象，之前已经通过<code>request.setAttribute()</code>将其设置于页面的上下文中</p>
     <p>EL 表达式： <code>${empty value ? Foo : bar}/${not empty value ? Bar : foo}</code><br>
         含义：三元二目式判断值是否为空</p>
     <p>EL 表达式 <code>${'请求完成耗时：'.concat(requestTimeRecorder).concat('秒') }</code><br>
         含义：EL 不支持字符串 + 操作符，故使用 String 的 concat() 代替</p>
     <p>EL 表达式可否获取或读取 Java 常量？答案是肯定的（EL v3.0新特性），首先在 JSP 中 import 具体的类，然后<code>${XXX类名称.成员}</code>
-        即可读取<code>public final static</code>的 Java常量。
+        即可读取<code>public final static</code>的 Java 常量。
         注意不能是接口而是普通类。接口也没关系，弄一个空的实现类即可。</p>
 
 </body>

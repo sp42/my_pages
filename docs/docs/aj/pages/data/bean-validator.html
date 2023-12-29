@@ -8,9 +8,8 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../../common/inner.css" />
-    <script src="../../common/inner.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="../../../common/inner.css" />
+    <script src="../../../common/inner.js"></script>
 </head>
 
 <body>
@@ -80,7 +79,6 @@ public ValidatorContextAware initValidatorContextAware() {
 
 @Data
 public class JvmInfo implements IBaseModel {
-
     private String name;
 
     @NotNull
@@ -92,10 +90,10 @@ public class JvmInfo implements IBaseModel {
     <p>然后在 controller 里面方法参数上添加<span class="c">@Validated</span>注解，注意是<span
             class="c">org.springframework.validation.annotation.Validated</span>。</p>
     <pre class="code java-code">@PostMapping("/test")
-    public boolean test(@Validated JvmInfo info) {
-        System.out.println(info);
-        return true;
-    }
+public boolean test(@Validated JvmInfo info) {
+    System.out.println(info);
+    return true;
+}
 </pre>
 
 
@@ -131,7 +129,7 @@ public @interface IdCard {
 }</pre>
 
     <p>然后在枚举类 ValidatorEnum 中增加具体的校验方法，如果不通过就抛出 ValidatorException 异常。</p>
-    <img src="../imgs/bean-v/1.png" />
+    <img src="../../imgs/bean-v/1.png" />
     <p> 至此就完成了自定义注解的定义。</p>
 
     <h2>原理分析</h2>
