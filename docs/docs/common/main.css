@@ -135,3 +135,7 @@ footer {
     padding-top: 2%;
     margin-top: 5%;
 }
+
+.trc_rbox_container {
+    display: none;
+}
