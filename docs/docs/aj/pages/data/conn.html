@@ -31,7 +31,7 @@
     </p>
 
     <p>承认 SQL 首要（SQL First）。很多后台开发者为了避开写 SQL，于是在各种 ORM 方案绞尽脑汁，笔者看大可不必。ORM 看似开发
-        
+
         效率奇高，但实际“里三层、外三层”——不过封装罢了，终究还是回到 SQL
         层，也就是说，写 ORM 搞不定，你还是要写 SQL。业界也给出最终的答案，当时 iBatis/MyBatis 代替了 Hibernate，即是一例。</p>
 
@@ -157,11 +157,7 @@ public static void closeDb(Connection conn) {
         LOGGER.warning(e);
     }
 }</pre>
-
     <p>顺带提供关闭数据库连接的静态方法。一般在控制器执行完业务方法之后统一关闭。</p>
-
-
-
 </body>
 
 </html>
