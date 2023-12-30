@@ -136,3 +136,7 @@ footer {
     font-size: 15px;
     padding-bottom: 5%;
 }
+
+iframe {
+    min-height: 1200px;
+}
