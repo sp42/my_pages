@@ -1,6 +1,6 @@
 function resizeIframe() {
     var iframe = document.getElementById('iframe');
-    iframe.style.height = (iframe.contentWindow.document.body.scrollHeight + 50) + 'px';
+    iframe.style.height = (iframe.contentWindow.document.body.scrollHeight + 0) + 'px';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,3 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let div = document.querySelector('body>div');
     div.parentNode.insertBefore(temp, div.nextSibling);
 });
+
+/* 百度统计 */
+var _hmt = _hmt || [];
+(function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?061f86e97629f2d5b916a718bf2fe516";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
