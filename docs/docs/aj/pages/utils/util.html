@@ -14,36 +14,79 @@
 
 <body>
     <h1>常用的工具函数</h1>
-    <p>日志记录功能在开发中很常用，不仅可以记录程序运行的细节，方便调试，也可以记录用户的行为，是框架中不可或缺的组件。
-        为最大程度复用现有的组件，我们就地取材使用了 JDK 自带的 JUL（ <span class="c">java.util.logging</span>）作为日志组件，并对其进行功能上的增强，
-        同时整合了 Slf4J 语法风格，使用上也更便捷，可结合 Lombok 强大的功能，在类身上施加一个注解即可。
+    <p>鉴于 Spring 之普及，我们完全可以复用来自 Spring 高质量的工具函数，而不是重新搞一套，也无须依赖 Apache Common。大头组件有 RestTemplate 用于 HTTP 请求。
+        另外下面是常见的 Spring 工具方法。
     </p>
 
-    <pre class="code java-code">import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@Slf4j
-public class TestSlf4J {
-    @Test
-    public void test() {
-        Logger logger = LoggerFactory.getLogger(TestSlf4J.class);
-        logger.info("Hello World 1");
-
-        log.info("Hello World 2");
-        log.info("Hello {}, it's {} day.2", "Frank", "good");
-        log.info("Hello {}, it's {} day{}2", "Frank", "good", "?");
-
-        log.debug("Hello World3");
-        log.debug("Hello {}, it's {} day.3", "Frank", "good");
-        log.debug("Hello {}, it's {} day{}3", "Frank", "good", "?");
-
-        log.warn("Hello {}, it's {} day{}4", "Frank", "good", "?");
-    }
-}        
+    <pre class="code java-code">StringUtils.hasText(str); // 判断字符串是否为空
+boolean isNotEmpty = ObjectUtils.isNotEmpty(array/map/list); // 判断数组、列表、Map 是否为空
+BeanUtils.copyProperties(user1, user2); // 复制 Bean
+ReflectionUtils.setFieldValue(object, fieldName, newValue); // 反射，设置对象的属性值
+FileCopyUtils.copy(); // 用于复制文件
+StreamUtils.copy(); // 用于复制输入流或输出流
+ResourceLoader.getResource(); 用于加载资源文件，例如配置文件和模板文件等
+String encryptMD5 = DigestUtils.md5DigestAsHex("".getBytes()); // MD5 加密
+byte[] encodedBytes = Base64Utils.encode("".getBytes());// 编码为 Base64
+byte[] decodedBytes = Base64Utils.decode("".getBytes()); // 解码回原始文本
+String encodedUrl = UriUtils.encode(originalUrl, "UTF-8"); // URL 编码。JDK 自带的有缺陷
+String decodedUrl = UriUtils.decode(encodedUrl, "UTF-8"); // URL 解码
 </pre>
-
+    <h2>AJ 工具函数</h2>
+    <p>下面是 AJ 框架封装的工具函数。</p>
+    <table>
+        <tr>
+            <th>包名</th>
+            <th>说明</th>
+        </tr>
+        <tr>
+            <td>StrUtil</td>
+            <td>字符串工具类</td>
+        </tr>
+        <tr>
+            <td>ObjectHelper</td>
+            <td>处理对象一些相关函数</td>
+        </tr>
+        <tr>
+            <td>DateUtil</td>
+            <td>日期格式化的相关函数</td>
+        </tr>
+        <tr>
+            <td>ListUtils</td>
+            <td>集合工具类</td>
+        </tr>
+        <tr>
+            <td>EncryptUtil</td>
+            <td>MD5/SHA1/HMAC/DES/AES 加密、解密</td>
+        </tr>
+        <tr>
+            <td>WebHelper</td>
+            <td>Web 工具类</td>
+        </tr>
+        <tr>
+            <td>XmmlHelper</td>
+            <td>XML 处理工具类</td>
+        </tr>
+        <tr>
+            <td>regexp 包</td>
+            <td>正则工具类</td>
+        </tr>
+        <tr>
+            <td>reflect 包</td>
+            <td>反射工具类</td>
+        </tr>
+        <tr>
+            <td>cache 包</td>
+            <td>JDK 缓存</td>
+        </tr>
+        <tr>
+            <td>io 包</td>
+            <td>文件处理工具类，流处理工具类，ZIP 包处理</td>
+        </tr>
+        <tr>
+            <td>convert 包</td>
+            <td>值转换、映射</td>
+        </tr>
+    </table>
 </body>
 
 </html>

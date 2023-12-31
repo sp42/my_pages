@@ -168,6 +168,10 @@ th {
     display: none;
 }
 
+#lv-container {
+    margin-top: 80px;
+}
+
 .release-date {
     color: lightgray;
     font-size: 14px;

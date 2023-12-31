@@ -48,29 +48,42 @@
     </p>
 
     <h2>调用例子</h2>
-    <pre class="code java-code">import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+    <p>转换 Java 值为 JSON 值。</p>
+    <pre class="code java-code">Object obj = true;
+String json = ConvertToJson.toJson(obj);
+assertEquals("true", json);
 
-@Slf4j
-public class TestSlf4J {
-    @Test
-    public void test() {
-        Logger logger = LoggerFactory.getLogger(TestSlf4J.class);
-        logger.info("Hello World 1");
+obj = 123;
+json = ConvertToJson.toJson(obj);
+assertEquals("123", json);
 
-        log.info("Hello World 2");
-        log.info("Hello {}, it's {} day.2", "Frank", "good");
-        log.info("Hello {}, it's {} day{}2", "Frank", "good", "?");
+obj = 100000000000000001L;
+json = ConvertToJson.toJson(obj);
+assertEquals("\"100000000000000001\"", json);
 
-        log.debug("Hello World3");
-        log.debug("Hello {}, it's {} day.3", "Frank", "good");
-        log.debug("Hello {}, it's {} day{}3", "Frank", "good", "?");
+obj = 99999L;
+json = ConvertToJson.toJson(obj);
+assertEquals("99999", json);
 
-        log.warn("Hello {}, it's {} day{}4", "Frank", "good", "?");
-    }
-}        
+obj = "hello";
+json = ConvertToJson.toJson(obj);
+assertEquals("\"hello\"", json);
+
+Map map = new HashMap();
+map.put("name", "John");
+map.put("age", 30);
+json = ConvertToJson.toJson(map);
+assertEquals("{\"name\":\"John\",\"age\":30}", json);   
 </pre>
+<p>列表转换为 JSON。</p>
+<pre class="code java-code">
+List list = new ArrayList();
+list.add(1);
+list.add(2);
+list.add(3);
+String json = ConvertToJson.list2Json(list);
+assertEquals("[1, 2, 3]", json);
+</pre>
+<p>TODO</p>
 </body>
 </html>
