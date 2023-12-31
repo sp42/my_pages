@@ -1,9 +1,7 @@
 function resizeIframe() {
     var iframe = document.getElementById('iframe');
     let h = iframe.contentWindow.document.body.scrollHeight;
-    if (h > 2000) {
-        h += 200;
-    }
+    h += 50;
 
     iframe.style.height = h + 'px';
 }
