@@ -161,19 +161,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let html = `<div id="lv-container" data-id="city" data-uid="MTAyMC80NDQ4OS8yMTAyMQ=="></div>`;
     let div = document.createElement('div');
     div.innerHTML = html;
-    document.querySelector('body').appendChild(div);
 
-    (function (d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
+    setTimeout(() => {
+        document.querySelector('body').appendChild(div);
 
-        if (typeof LivereTower === 'function') { return; }
+        (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
 
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
+            if (typeof LivereTower === 'function') { return; }
 
-        e.parentNode.insertBefore(j, e);
-    })(document, 'script');
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    }, 600);
 });
 
 /* 百度统计 */
