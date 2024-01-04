@@ -12,6 +12,11 @@ body {
     color: #606c71;
 }
 
+body.drak {
+    color: white;
+    background-color: black;
+}
+
 menu,
 ul,
 li {
@@ -29,10 +34,23 @@ a:hover {
     color: black;
 }
 
+body.drak a {
+    color: white;
+}
+
+body.drak a:hover {
+    color: gray;
+}
+
 nav {
-    border-bottom: 1px solid lightgray;
+    /* border-bottom: 1px solid lightgray; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
     width: 100%;
     height: 80px;
+}
+
+body.drak nav {
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 2px 0px;
 }
 
 nav>div {
