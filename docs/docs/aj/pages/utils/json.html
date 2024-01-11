@@ -28,12 +28,9 @@
             href="https://zhangxin.blog.csdn.net/article/details/86688282" target="_blank">
             https://zhangxin.blog.csdn.net/article/details/86688282</a>。
     </p>
-    <p>
-        <a href="https://search.maven.org/artifact/com.ajaxjs/ajaxjs-framework" target="_blank">
-            <img src="https://img.shields.io/maven-central/v/com.ajaxjs/ajaxjs-framework?label=Latest%20Release"
-                alt="最新版本" />
-        </a>
-    </p>
+    <a href="https://central.sonatype.com/artifact/com.ajaxjs/aj-json" target="_blank">
+        <img src="https://img.shields.io/maven-central/v/com.ajaxjs/aj-json?label=Latest%20Release" alt="最新版本" />
+    </a>
 
     <pre class="code xml-code"><!-- 轻量级的 JSON 反序列化 -->
 <dependency>
@@ -75,8 +72,8 @@ map.put("age", 30);
 json = ConvertToJson.toJson(map);
 assertEquals("{\"name\":\"John\",\"age\":30}", json);   
 </pre>
-<p>列表转换为 JSON。</p>
-<pre class="code java-code">
+    <p>列表转换为 JSON。</p>
+    <pre class="code java-code">
 List list = new ArrayList();
 list.add(1);
 list.add(2);
@@ -84,6 +81,7 @@ list.add(3);
 String json = ConvertToJson.list2Json(list);
 assertEquals("[1, 2, 3]", json);
 </pre>
-<p>TODO</p>
+    <p>TODO</p>
 </body>
+
 </html>
