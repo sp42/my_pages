@@ -32,8 +32,7 @@ SELECT COUNT(1) FROM user;</pre>
         SQL 参数（选填项，能对应 SQL 里面的<code>?</code>的插值符）。
     </p>
 
-    <pre
-        class="code java-code">public static &lt;T&gt; T queryOne(Class&lt;T&gt; clz, String sql, Object... params);</pre>
+    <pre class="code java-code">public static &lt;T&gt; T queryOne(Class&lt;T&gt; clz, String sql, Object... params);</pre>
 
     <p>参数 clz 支持的类型有 String、Integer、Long、Float、Double 等。 例子如下：</p>
 
