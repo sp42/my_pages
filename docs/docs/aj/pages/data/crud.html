@@ -172,7 +172,7 @@ public static &lt;T&gt; List&lt;T&gt; list(String sqlId, Class&lt;T&gt; beanClz,
  * @param &lt;T&gt;       实体 Bean 类型
  * @return 查询结果，如果没数据返回一个空 List
  */
-public static &lt;T&gt; PageResult&lt;T&gt; page(Class&lt;T&gt; beanClz, String sql, Map<String, Object> paramsMap);
+public static &lt;T&gt; PageResult&lt;T&gt; page(Class&lt;T&gt; beanClz, String sql, Map&lt;String, Object&gt; paramsMap);
 
 /**
  * 分页查询列表记录，以 List Java Bean 格式返回
@@ -183,7 +183,7 @@ public static &lt;T&gt; PageResult&lt;T&gt; page(Class&lt;T&gt; beanClz, String 
  * @param &lt;T&gt;       实体 Bean 类型
  * @return 查询结果，如果没数据返回一个空 List
  */
-public static &lt;T&gt; PageResult&lt;T&gt; page(String sqlId, Class&lt;T&gt; beanClz, Map<String, Object> paramsMap);</pre>
+public static &lt;T&gt; PageResult&lt;T&gt; page(String sqlId, Class&lt;T&gt; beanClz, Map&lt;String, Object&gt; paramsMap);</pre>
 
 
     <p>返回的分页结果是 PageResult，是比较通用的结构了。它继承于 ArrayList：</p>
@@ -231,7 +231,13 @@ public class PageResult&lt;T&gt; extends ArrayList&lt;T&gt; {
 
     <p>要分页返回返回 Map 的，<code>page(clz)</code>中的 clz 参数传 null 即可。</p>
 
-
+    <h2>原理分析</h2>
+    <p>有关原理的分析，请移步至博客文章：
+        <span class="external-link">
+            <span>↗</span>
+        </span>
+        <a href="https://zhangxin.blog.csdn.net/article/details/130445993" target="_blank">https://zhangxin.blog.csdn.net/article/details/130445993</a>。
+    </p>
 </body>
 
 </html>
