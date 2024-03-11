@@ -86,3 +86,39 @@ dd li {
         border: 0;
     }
 }
+
+/* 手机端浏览器所显示的网页 CSS */
+@media screen and (max-width:480px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+        /* 很多 Android 浏览器的 a 链接有边框，这里取消它  */
+        -webkit-touch-callout: none;
+        /* 在 iOS 浏览器里面，假如用户长按 a 标签，都会出现默认的弹出菜单事件 */
+        /* -webkit-user-select:none; */
+    }
+
+    html {
+        background-color: white;
+    }
+
+    body {
+        width: 100%;
+        border: 0;
+        padding: 0px;
+        padding-left: 15px;
+        margin: 0;
+    }
+
+    ul {
+        margin-left: 30px;
+    }
+
+
+}
+
+p {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
