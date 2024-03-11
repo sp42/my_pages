@@ -51,7 +51,7 @@
     <p>调用 Java 类的方法，例子如下</p>
     <pre
         class="code sql-code">INSERT INTO sys_bookmark (name, content, user_id) VALUES (#{name}, #{content},{T(com.ajaxjs.framework.entity.BaseCRUD).getCurrentUserId()});</pre>
-    <p>Spring ExpressionParser 可以调用 Java 类方法，包括静态方法和非静态方法。 要调用静态方法，可以使用以下语法：</p>
+    <p>Spring Expression Language 可以调用 Java 类方法，包括静态方法和非静态方法。 要调用静态方法，可以使用以下语法：</p>
     <pre class="code java-code">T(className).methodName(arguments)</pre>
 
 </body>

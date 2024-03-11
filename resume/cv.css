@@ -1,0 +1,88 @@
+html {
+    background-color: #e3e3e3;
+    text-rendering: optimizelegibility;
+    font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+}
+
+body {
+    margin: 20px auto;
+    background-color: white;
+    width: 800px;
+    border: 1px solid lightgray;
+    padding: 3%;
+    height: auto;
+}
+
+.avatar {
+    float: right;
+}
+
+a {
+    text-decoration: underline;
+}
+
+p {
+    text-indent: 2em;
+    font-size: 18px;
+    line-height: 2;
+    text-align: justify;
+    margin: 8px 15px;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-family: "Noto Serif TC", "source-han-serif-tc", serif;
+    font-weight: bold;
+}
+
+h2 {
+    color: #606c71;
+    letter-spacing: 3px;
+    font-family: "Noto Serif TC", "source-han-serif-tc", serif;
+    font-weight: 700;
+    border-bottom: 1px solid lightgray;
+    margin: 30px 0;
+}
+
+li {
+    font-size: 18px;
+    margin: 8px 30px;
+    word-break: break-all;
+}
+
+dl {
+    border-top: 2px solid lightgray;
+    padding-top: 20px;
+}
+
+
+dt {
+    min-width: 140px;
+    display: inline-block;
+    margin-bottom: 8px;
+    vertical-align: top;
+}
+
+dt,
+dd {
+    font-size: 18px;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+
+dd {
+    margin-left: 0;
+}
+
+dd li {
+    max-width: 590px;
+    margin: 0 0 8px 0;
+}
+
+@media print {
+
+    /* 所有的打印样式在这里设置 */
+    body {
+        border: 0;
+    }
+}
