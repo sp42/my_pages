@@ -1,4 +1,6 @@
 html {
+    padding: 0;
+    margin: 0;
     background-color: #e3e3e3;
     text-rendering: optimizelegibility;
     font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
@@ -11,6 +13,7 @@ body {
     border: 1px solid lightgray;
     padding: 3%;
     height: auto;
+    color: #606c71;
 }
 
 .avatar {
@@ -28,15 +31,20 @@ p {
     text-align: justify;
     margin: 8px 15px;
     letter-spacing: 1px;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
 
 h1 {
     font-family: "Noto Serif TC", "source-han-serif-tc", serif;
     font-weight: bold;
+    color: black;
 }
 
 h2 {
-    color: #606c71;
+    color: black;
     letter-spacing: 3px;
     font-family: "Noto Serif TC", "source-han-serif-tc", serif;
     font-weight: 700;
@@ -47,7 +55,10 @@ h2 {
 li {
     font-size: 18px;
     margin: 8px 30px;
-    word-break: break-all;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
 
 dl {
@@ -89,16 +100,23 @@ dd li {
 
 /* 手机端浏览器所显示的网页 CSS */
 @media screen and (max-width:480px) {
+
     * {
         -webkit-tap-highlight-color: transparent;
         /* 很多 Android 浏览器的 a 链接有边框，这里取消它  */
         -webkit-touch-callout: none;
         /* 在 iOS 浏览器里面，假如用户长按 a 标签，都会出现默认的弹出菜单事件 */
         /* -webkit-user-select:none; */
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
     }
 
     html {
         background-color: white;
+        padding: 0;
+        margin: 0;
     }
 
     body {
@@ -106,19 +124,12 @@ dd li {
         border: 0;
         padding: 0px;
         padding-left: 15px;
+        box-sizing: border-box;
         margin: 0;
+
     }
 
     ul {
-        margin-left: 30px;
+        /*  margin-left: 10px; */
     }
-
-
-}
-
-p {
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
 }
