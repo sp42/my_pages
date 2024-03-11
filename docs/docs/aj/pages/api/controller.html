@@ -38,7 +38,7 @@ public Book save(@RequestBody Book book, @PathVariable int id) {
         在接口上的控制器注解也能检测到，并自动映射到实现类上。
     </div>
 
-    <p>说白了就是控制器只是个 Java Interface，对应的实现却不是控制器，而是业务类。这样相当于简化了 Controller 编写。我们用一个用户的例子来看看。首先定义控制器，这里提供了相关的 MVC 的注解。</p>
+    <p>说白了就是控制器只是个 Java Interface，对应的实现却不是控制器，而是业务类。这有点控制器与业务类合二为一的味道。实际上为我们减少不少编码量，还是相当值得使用的。这样相当于简化了 Controller 编写。我们用一个用户的例子来看看。首先定义控制器，这里提供了相关的 MVC 的注解。</p>
 
     <pre class="code java-code">import com.ajaxjs.user.model.User;
 import org.springframework.web.bind.annotation.*;

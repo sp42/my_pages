@@ -118,8 +118,6 @@ public class BaseConfiguration implements WebMvcConfigurer {
         return JdbcConn.setupJdbcPool("com.mysql.cj.jdbc.Driver", url, user, psw);
     }
 }</pre>
-
-
     <h3>Profiles</h3>
     <p>在实际使用环境中，我们同一个应用环境可能需要在不同环境运行（开发、测试、生产等），每个环境的参数都有可能不同（连接参数、日志级别等），使用 profiles 可以将不同环境下的参数进行拆分，并指定加载。</p>
 
@@ -127,7 +125,6 @@ public class BaseConfiguration implements WebMvcConfigurer {
     <img src="../../imgs/api/1.png" />
     <p>要选择哪个 profile，在 IDEA 里面选 Maven Profile 打勾即可。</p>
     <img src="../../imgs/api/2.png" />
-    <p>这有点控制器与业务类合二为一的味道。实际上为我们减少不少编码量，还是相当值得使用的。</p>
 </body>
 
 </html>
