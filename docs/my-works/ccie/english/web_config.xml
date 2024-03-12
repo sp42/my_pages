@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="gb2312"?>
+<webconfig>
+	<database>
+		<dbpath>../../../database/hyback.mdb</dbpath>
+	</database>
+	<cms>
+		<cover2html>hjk</cover2html>
+	</cms>
+	<Page>
+		<title>广州活映网页工作坊</title>
+		<DefaultLanguage>CN</DefaultLanguage>
+		<Bad_words>他妈的|fuck|bitch|asshole|傻B|屁|法轮|反共|国民党|共匪|台独|卖淫|性爱|三级片|鸡巴|我靠|操你|干你|日你|FA|FALUN|FALUN大法|砝</Bad_words>
+		<SQL_injdata>'|and|exec|insert|select|delete|update|count|*|%|chr|mid|master|truncate|char|declare</SQL_injdata>
+	</Page>
+	<CorpInfo>
+		<CorpName>adfdf</CorpName>
+		<CorpCopyRight>版权所有  2004 Powered By gzhy163.com </CorpCopyRight>
+		<CorpHost>www.webcad.com.cn</CorpHost>
+		<CorpTel>020-38216903</CorpTel>
+		<CorpAddr></CorpAddr>
+		<CorpFax>020-38216146</CorpFax>
+		<CorpZip>510620</CorpZip>
+		<CorpEMail>sdwl@bcenter.com.cn</CorpEMail>
+	</CorpInfo>
+</webconfig>

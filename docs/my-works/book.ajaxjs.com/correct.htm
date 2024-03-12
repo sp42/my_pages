@@ -1,0 +1,78 @@
+﻿<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="asset/style.css" />
+	<title>JavaScript凌厉开发：Ext JS 3详解与实践</title>
+	<style>
+		body{
+			background-color:white;
+		}
+	</style>
+</head>
+<div>
+	<table class="topTable">
+		<tr>
+			<td>
+				<h3 class="left">
+					<img src="asset/images/kanwu_18.gif" hspace="40" />
+				</h3>
+			</td>
+			<td width="40">
+				<img src="asset/images/index_11.jpg" vspace="4" />
+			</td>
+		</tr>
+	</table>
+	<div class="p">
+		<br /> <b>欢迎热心读者反馈你找到的错误，若一经核实则奉赠此书一本，谢谢支持！
+			<br />
+			联系邮箱：support@ajaxjs.com</b> 
+		<br />
+		<br />
+		<ol style="margin-left:20px">
+			<li>
+				《数据驱动》例程 7.20源码
+				<a href="http://bbs.ajaxjs.com/attachment.php?aid=678&k=41e28d6eed9b56267d3a4b73427edde5&t=1277624963&sid=3df73nMvkZEmTFH8bjDd3KepHFK4xlzlcAIYFn2ldqsmrLY">下载</a>
+				。
+			</li>
+			<li>
+				第20页：讲解Ext.Element.appendChild()用法示范片断，原书这样写：
+				<br />
+				Ext.fly('elId').appendChild(['elId3', 'elId2'])
+				<br />
+				应该不写数组，改为
+				<br />
+				Ext.fly('elId').appendChild('elId3', 'elId2')
+			</li>
+			<li>
+				第72页也就是4.4.1定义UI/CSS那一节中，原话：“每颗星都被划分一半，总分10分，每颗半星就是0.5分”然而图中只有5颗星...总分为10分，所以每颗半星应该是1分。
+			</li>
+			<li>
+				书84页的例程5.2，修改属性propA其值的顺序应该是1，3，2 而不是1，2，3。另外，能不能修改是比较自然理解的顺序1、2、3呢？是可以的。如果要求按照1、2、3的顺序，应该修改initComponent()为constructor()构造器，如下代码：
+				<textarea rows="15" cols="60" class="edk-code">// 测试修改的属性顺序如何
+foo = new Ext.extend(Ext.Component, {
+     propA:1
+    ,constructor: function(){
+        alert(this.propA)
+        Ext.apply(this, {
+            propA: 2
+        });
+        alert(this.propA);
+        foo.superclass.constructor.apply(this, arguments);
+        alert(this.propA);
+    }
+});
+new foo({p:3});</textarea>
+				<br />
+				此时观察属性的变化，是1、2、3。
+			</li>
+			<li>
+				书中第34页，第二行“例如一个input元素加入QucikTip，”中“QucikTip”写错，应为“QuickTip”。
+			</li>
+			<li>
+				书中第30页，倒数第6行，“setSize()返回尺寸大小的对象”应为“setSize()设置元素的大小尺寸”或者“getSize()返回元素尺寸大小”。
+			</li>
+			<li>
+				第12页第二行 “// 基类Persion，继承自Object”，应该是  “// 基类Person，继承自Object”。
+			</li>
+		</ol>
+	</div>
+</div>

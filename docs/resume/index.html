@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="cv.css" />
 </head>
 
-<body>
+<body class="hide">
     <header>
         <img src="avatar.jpg" class="avatar" />
         <h1>张鑫 Frank Cheung</h1>
@@ -37,10 +37,10 @@
     <br />
     <br />
     <br />
-    <p>本人从事十年 Web 开发经验，三年团队管理经验。熟悉 Java/H5 全栈开发，系 CSDN 博客认证专家，三本 Web 技术书籍的作者。干过外包，做过部门的技术主管，起起伏伏，还没成大事。
+    <p>本人从事十年 Web 开发经验，三年团队管理经验。熟悉 Java/H5 全栈开发，系 CSDN 博客认证专家，三本 Web 技术书籍的作者。干过外包，做过部门的技术主管，起起伏伏，未成大事。
     </p>
-    <p> 技术栈从前端的原生 JavaScript/TypeScript，Vue.js/H5 混合/小程序开发，到后端 Java/Spring Boot/Node.js，
-        数据库 MySQL/Oracle/Redis；熟悉微服务 Dubbo/Nacos 及 Linux 从开发、测试到部署上线、软件分发等各个流程，H5 复杂动效。做过微信小程序、各类支付集成、各类 Web/企业应用。
+    <p> 技术栈从前端的原生 JavaScript/TypeScript，Vue.js/H5 混合 App/小程序开发，到后端 Java/Spring Boot/Node.js，数据库 MySQL/Oracle/Redis；熟悉微服务
+        Dubbo/Nacos 及 Linux 从开发、测试到部署上线、软件分发等各个流程，H5 复杂动效。做过微信小程序、各类支付集成、各类 Web/企业应用。
     </p>
     <p>
         我的技术博客是：<a href="https://zhangxin.blog.csdn.net" target="_blank">zhangxin.blog.csdn.net</a>；公众号：<a
@@ -58,7 +58,7 @@
         <dt>职责</dt>
         <dd>
             <ul>
-                <li>无人机集群后台系统，IoT 对接；演习指控系统后台系统</li>
+                <li>无人机集群后台系统，无人机 IoT 对接；演习指控系统后台系统</li>
                 <li>奇瑞汽车合作系统，车辆长租、短租业务开发</li>
             </ul>
         </dd>
@@ -97,7 +97,9 @@
         <dt>职责</dt>
         <dd>
             <ul>
-                <li>自研框架、工作流系统，包括完整设计器和后端</li>
+                <li>自研框架、工作流系统，包括完整设计器和后端（<span class="external-link">
+                    <span>↗</span>
+                </span><a href="../demo/workflow/" target="_blank">演示</a>）</li>
                 <li>软件外包：各类网站、微信公众号、小程序商城，H5 复杂动效、小型进销存系统</li>
             </ul>
         </dd>
@@ -136,21 +138,29 @@
         <dd>ExtJS 书籍的作者，JavaScript/Node.js 的传播布道者</dd>
         <br />
         <dt></dt>
-        <dd>JavaScript Node.js ExtJS HTML5</dd>
+        <dd>JavaScript Node.js ExtJS HTML5 <span class="external-link">
+            <span>↗</span>
+        </span><a href="../my-works/book.ajaxjs.com/" target="_blank">简介</a></dd>
     </dl>
     <dl>
         <dt>2007-2008</dt>
-        <dd>深圳奥德泰实业有限公司 ASP 开发</dd>
+        <dd>深圳奥德泰实业有限公司 网站 ASP 开发</dd>
         <br />
         <dt></dt>
-        <dd>Microsoft ASP Access</dd>
+        <dd>ASP Access 案例<span class="external-link">
+                <span>↗</span>
+            </span><a href="../my-works/ccie/" target="_blank">一</a>、<span class="external-link">
+                <span>↗</span>
+            </span><a href="../my-works/th/" target="_blank">二</a>
+
+        </dd>
     </dl>
     <dl>
         <dt>2006</dt>
-        <dd>广州速达网络有限责任公司 网页设计师</dd>
+        <dd>广州速达网络有限责任公司 网页设计</dd>
         <br />
         <dt></dt>
-        <dd>Microsoft .Net 2.0 Dreamweaver Photoshop</dd>
+        <dd>.Net 2.0 Dreamweaver Photoshop</dd>
     </dl>
     <h2>学 历</h2>
     <ul>
@@ -164,5 +174,12 @@
         <li>Adobe AIR 完整入门与开发实录，清华大学出版社，2008</li>
     </ul>
 </body>
+<script>
+    if (location.href.indexOf('localhost') == -1) {
+        if (prompt('Password?') != 'yes')
+            document.body.innerHTML = 'No auth';
+    }
+    document.querySelector('.hide').className = '';
+</script>
 
 </html>
