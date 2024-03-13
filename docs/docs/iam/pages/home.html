@@ -4,75 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>数据服务 DataService</title>
+    <title>AJ-IAM </title>
     <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="AJ-IAM" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../../common/inner.css" />
-    <script src="../../common/js/inner.js"></script>
+    <script src="../../common/inner.js"></script>
 </head>
 
 <body>
-    <h1>数据服务简介</h1>
-    <section>
-        <a name="intro"></a>
-        <h4>只需写 SQL 业务逻辑（甚至零代码不写！），即可快速搭建 CRUD 接口服务</h4>
-        <p style="text-align: right;font-style: italic;">——最简单的方式：零代码，在页面上配置好参数，自动生成 SQL 并且直接转化成 HTTP API。</p>
-        <img class="content" style="border: 1px solid #ccc;" src="../imgs/ds.jpg" title="管理主界面" />
-        <p style="text-align: center;"><a href="" target="_blank">进入演示</a>，账号：demo_user，密码：demo_user</p>
-        <p>Java 企业级开发中，要写 Model、DAO、Service 和 Controller 代码是一件非常繁琐的事情，里面存在着大量的重复工作，DataService
-            就是为了解决这个问题而生的。按照业务复杂程度的递进，可分为以下三种 DataService 的应用模式：
-        <ul>
-            <li>大量的基础数据。这类数据表的特点是没什么或少量常见的业务逻辑，采用 DataService 创建通用的 CRUD 服务即可完成。</li>
-            <li>自定义的业务逻辑，并非简单的 CRUD，但通过 SQL 仍能实现，不用额外写 Java 的业务代码，尤其适用于 BI 报表、数据可视化大屏的后端接口开发。</li>
-            <li>复杂的业务逻辑，需 Java+SQL 协力完成。这时 DataService 仍能作为一种 ORMtitle 机制出现，相当于一个 Data Access Object，返回 Java Bean 实体。</li>
-        </ul>
-        </p>
-        <p>DataService 不是代码生成器，更直观地说它是把一切常见 CRUD 工作抽象化，然后使之可配置化的快速业务开发工具。</p>
-    </section>
-    <section>
-        <h2>特点</h2>
-        <a name="point"></a>
-        <ul>
-            <li>支持所有 JDBC 协议的数据库，包括
-                MySQL、Oracle、SQLServer、PostgreSQL、H2、HSQLDB、SQLite、MariaDB、DB2、Firebird、Derby、Sybase、Informix、Microsoft
-                SQL</li>
-            <li>支持动态 SQL，类似 MyBatis 的动态 SQL，支持 SQL 调用 Java 函数、支持 SQL 编辑、运行、调试</li>
-            <li>动态创建 API，支持 API 动态创建、编辑、下线、删除，API 动态发布，不需要重启</li>
-            <li>支持多 SQL 组合、事务、支持多数据源可自由切换</li>
-            <li>提供 Java 调用数据服务，无须经过 HTTP 调用 API，如同传统 Service 调用 DAO（Data Access Object） 模式那样子</li>
-            <li>丰富的插件扩展，支持缓存、数据转换、失败告警（TODO）</li>
-            <li>支持生成 API 接口文档，导入导出（TODO）</li>
-            <li>轻量级设计，既可独立运行，也可整合到 Spring 程序中。</li>
-        </ul>
-    </section>
-    <section>
-        <h2>缘起</h2>
-        <a name="start"></a>
-        <p>
-            企业级的开发中包含大量的表单应用，与之对应的是数据库的表。虽然也包含关联表的较复杂操作和逻辑，但总体来说存在大量的重复工作——简而化之就是 CRUD 操作。首先是后台的业务操作，必须明确，抽象一个统一的 CRUD
-            服务与复杂多变的业务需求并不矛盾：能抽象的就抽象，不能抽象统一的就开放，无他尔。特别是写入操作（创建 or
-            更新）往往是可以做到统一的，而查询（SELECT）某种程度也能抽象（如分页，等等）。这就需要我们制定一套合理、高效的应用规则，实现上述设计之目标。与前端的关系，就是根据前端传入的参数来组装一条完整的
-            SQL，执行完毕把结果以
-            JSON 形式返还给前端。对于前端而言，虽然看到不同的 API 接口，但对于后端而言，只是一个 API 接口的入口，然后根据不同 URL 目录作分发而已。
-        </p>
-        <p>
-            前端的表单界面，实际没必要单独定制。在个性化跟统一化两边应要根据开发成本决定的。当采用统一化设计的时候，自动化生成表单界面变得很重要了。关于表单、列表 UI 生成器我们另外专题再讲。
-        </p>
-        <p>
-            前端表单做成统一的 CRUD 组件，字段名跟后端一致即可，提交参数为 JSON 传给后端统一的 CRUD 服务即可。
-        </p>
-        <p>
-            前端列表组件也是，关键在于复杂的 SELECT Query 查询，不同情况下组合的条件查询。甚至有种简单直接的办法，就是前端直接生成 SQL WHERE 语句传到后端，这并不是完整的 SQL，而是 SQL
-            片断，安全性更高（当然后端也要做好诸如 SQL 注入等的检查）。
-        </p>
-        <p>
-            退一万步讲，即使不使用统一的 CRUD 接口，也可以把数据服务作为一个 ORM 工具，或者说对 MyBatis 的进一步封装。实际上本作者也是大量这么使用的。这就是数据服务的另外一种模式：DAO 模式（Data
-            Access Object）。DAO 后端开发人员都不陌生，在后端纯粹使用数据服务也是非常自然，无太大入侵的。最大的变化，则是之前在 MyBatis XML 写的 SQL 语句，如今却是放到数据库中保存 SQL
-            了，当然你不需要进入数据库修改 SQL（当然也不是不可以），而是在数据服务提供 GUI 中编辑 SQL，即时生效无需重启。有一套新的环境管理 SQL，底层仍是 MyBatis，而后端代码仍是程序员熟悉的
-            DAO。另外一点好处，就是既然在 Java 了，肯定是带类型的 Bean 实体 ORM，而不是 Map（当然用 Map 也是可以，看需要）。
-        </p>
-    </section>
+    <h1>AJ-IAM</h1>
+    <p>统一身份认证（Identity and Access Management，简称IAM）是为用户管理及权限管理而提供的基础服务，可以帮助您安全地控制用户和资源的访问权限。</p>
+    <p>
+        如果您使用各种应用程序或者服务，例如管理后台、CMS 发布系统等，您可以使用 IAM 的用户管理功能，给员工或应用程序统一创建 IAM
+        用户，并授予IAM用户刚好能完成工作所需的权限，新创建的IAM用户可以使用自己单独的用户名和密码登录服务。IAM 用户的作用是多用户协同操作同一帐号时，避免分享帐号的密码。
+    </p>
 
 </body>
 
