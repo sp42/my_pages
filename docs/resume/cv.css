@@ -11,9 +11,9 @@ body {
     background-color: white;
     width: 800px;
     border: 1px solid lightgray;
-    padding:2% 3%;
+    padding: 2% 3%;
     height: auto;
-    color: #606c71;
+    color: #3c3c3c;
 }
 
 a {
@@ -78,7 +78,6 @@ dl {
     padding-top: 20px;
 }
 
-
 dt {
     min-width: 140px;
     display: inline-block;
@@ -103,16 +102,16 @@ dd li {
 }
 
 @media print {
-
     /* 所有的打印样式在这里设置 */
     body {
         border: 0;
     }
 }
 
-/* 手机端浏览器所显示的网页 CSS */
-@media screen and (max-width:480px) {
 
+/* 手机端浏览器所显示的网页 CSS */
+
+@media screen and (max-width:480px) {
     * {
         -webkit-tap-highlight-color: transparent;
         /* 很多 Android 浏览器的 a 链接有边框，这里取消它  */
@@ -124,13 +123,11 @@ dd li {
         -ms-hyphens: auto;
         hyphens: auto;
     }
-
     html {
         background-color: white;
         padding: 0;
         margin: 0;
     }
-
     body {
         width: 100%;
         border: 0;
@@ -138,7 +135,6 @@ dd li {
         padding-left: 15px;
         box-sizing: border-box;
         margin: 0;
-
     }
 }
 
