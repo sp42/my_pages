@@ -1,0 +1,5 @@
+com.ajaxjs.s3client
+com.ajaxjs.s3client.factory
+com.ajaxjs.s3client.model
+com.ajaxjs.s3client.signer_v4
+com.ajaxjs.s3client.util
