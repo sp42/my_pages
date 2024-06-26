@@ -14,8 +14,8 @@
 
 <body>
     <h1>相关配置</h1>
-    <h2>忽略数据库连接</h2>
-    <p>一般情况下，每个控制器都会产生数据库连接。这是由框架对 Spring 的 <code>HandlerInterceptor</code> 拦截器默认全局配置的。但是你的控制器方法如果无须数据库连接，可以添加一个注解 <code>@IgnoreDataBaseConnect</code>。</p>
+    <h2>全局的数据库连接</h2>
+    <p>一般情况下，每个控制器都会产生数据库连接，因为默认每个接口所对应的方法都会涉及数据库操作。这是由框架对 Spring 的 <code>HandlerInterceptor</code> 拦截器默认全局配置的。但是你的控制器方法如果无须数据库连接，可以添加一个注解 <code>@IgnoreDataBaseConnect</code>忽略数据库连接，减少资源消耗。</p>
     <pre class="code java-code">@IgnoreDataBaseConnect
 public Foo getFoo() { // do your business code
     Foo foo = new Foo();

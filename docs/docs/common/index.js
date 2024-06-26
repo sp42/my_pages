@@ -43,3 +43,14 @@ var _hmt = _hmt || [];
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
 })();
+
+document.addEventListener('DOMContentLoaded', function () {
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var section = urlParams.get('section');
+    if (section) {
+        var t = document.querySelector('.' + section);
+        t.classList.add('selected');
+        document.querySelector('iframe').src = t.querySelector('a').href;
+    }
+});
