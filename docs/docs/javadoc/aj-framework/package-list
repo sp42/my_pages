@@ -1,0 +1,12 @@
+com.ajaxjs.data
+com.ajaxjs.data.sql_controller
+com.ajaxjs.framework
+com.ajaxjs.framework.entity
+com.ajaxjs.framework.entity.model
+com.ajaxjs.framework.filter
+com.ajaxjs.framework.filter.dbconnection
+com.ajaxjs.framework.filter.google_captcha
+com.ajaxjs.framework.response
+com.ajaxjs.framework.scheduled
+com.ajaxjs.framework.validator
+com.ajaxjs.framework.validator.custom

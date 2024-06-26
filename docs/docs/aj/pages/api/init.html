@@ -55,7 +55,7 @@
    </dependencies>
 </project></pre>
     <h2>配置</h2>
-    <p>在资源目录中安排 appliaction.yml 文件，内容如下：</p>
+    <p>在资源目录中安排 application.yml 文件，内容如下：</p>
     <pre class="code yaml-code">
 server:
     port: 8888 # 端口号
@@ -117,6 +117,16 @@ public class BaseConfiguration implements WebMvcConfigurer {
     DataSource getDs() {
         return JdbcConn.setupJdbcPool("com.mysql.cj.jdbc.Driver", url, user, psw);
     }
+}</pre>
+    <h4>非配置文件启动</h4>
+    <p>如果你不采用 application.yml 配置文件，那么使用 Java 配置亦可。</p>
+    <pre class="code java-code">public static void main(String[] args) {
+    TomcatConfig cfg = new TomcatConfig();
+    cfg.setEnableJsp(true);
+    cfg.setPort(8080);
+    cfg.setContextPath("/bar");
+
+    new EmbeddedTomcatStarter(cfg, new Class[]{FooApplication.class}).start();
 }</pre>
     <h3>Profiles</h3>
     <p>在实际使用环境中，我们同一个应用环境可能需要在不同环境运行（开发、测试、生产等），每个环境的参数都有可能不同（连接参数、日志级别等），使用 profiles 可以将不同环境下的参数进行拆分，并指定加载。</p>
