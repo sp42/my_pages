@@ -1,0 +1,55 @@
+git config --global user.email "sp42@qq.com"<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>数据服务 DataService</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../common/inner.css" />
+    <script src="../../common/inner.js"></script>
+</head>
+
+<body>
+    <h1>🔧 安装</h1>
+    <section>
+        <a name="intro"></a>
+        <h2>系统要求</h2>
+        <ul>
+            <li>Java 8 及以上，Spring 5.0 及以上</li>
+            <li>MySQL 8 及以上，当前配置只支持 MySQL 数据库，但 SQL 执行的数据不限 MySQL</li>
+            <li>轻量级设计，对系统要求低，单核/512MB RAM 即可运行服务</li>
+        </ul>
+    </section>
+
+    <section>
+        <a name="download"></a>
+        <h2>下载与源码</h2>
+        <p>数据服务依赖于 <a href="https://framework.ajaxjs.com" target="_blank">AJ Data 库</a>，严格来说它是该框架下的一个组件，故引入 AJ-Data 相关依赖即可。AJ
+            框架足够轻量级，包括依赖包在内的 JAR 包约 200 多kb。</p>
+
+        <p>
+            <a href="https://central.sonatype.com/artifact/com.ajaxjs/ajaxjs-data" target="_blank">
+                <img src="https://img.shields.io/maven-central/v/com.ajaxjs/ajaxjs-data?label=Latest%20Release"
+                    alt="最新版本" />
+            </a>
+        </p>
+
+        <pre class="code xml-code"><!-- AJ-Data 库 -->
+<dependency>
+    <groupId>com.ajaxjs</groupId>
+    <artifactId>ajaxjs-data</artifactId>
+    <version>1.2.1</version>
+</dependency></pre>
+
+        <p>源码： <a target="_blank" href="https://github.com/lightweight-component/aj-data">https://github.com/lightweight-component/aj-data</a>
+        | <a target="_blank" href="https://dev.ajaxjs.com/docs/javadoc/aj-data/">JavaDoc</a>
+        </p>
+        <p>Apache License Version--2.0. Free to use, modify.</p>
+
+    </section>
+</body>
+
+</html>
