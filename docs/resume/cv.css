@@ -27,6 +27,7 @@ a:hover {
 ul,
 li {
     margin: 0;
+    padding: 0;
 }
 
 .avatar {
@@ -97,8 +98,8 @@ dd {
 }
 
 dd li {
-    max-width: 590px;
-    margin: 0 0 8px 0;
+    max-width: 610px;
+    margin: 0 0 4px 0;
 }
 
 @media print {
