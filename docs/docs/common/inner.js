@@ -149,9 +149,6 @@ function highlightCode() {
 
         item.innerHTML = code;
     });
-
-
-
 }
 
 // 页面加载完成后，调用 highlightCode 函数

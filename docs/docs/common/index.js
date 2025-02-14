@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
     var section = urlParams.get('section');
+    
     if (section) {
         let selected = document.querySelector('li.selected');
         selected && selected.classList.remove('selected');
