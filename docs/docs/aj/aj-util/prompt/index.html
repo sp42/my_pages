@@ -1,0 +1,116 @@
+<p>你可以获取一个github代码仓库，把所有代码加载进去，进行学习，分析这些代码？Here is: https://github.com/lightweight-component/aj-util</p>
+<p>What is the purpose of this repository?</p>
+<p>Can u write the tutorials for <code>EncodeTools</code> and <code>MessageDigestHelper</code>? u can take the unit test code as some examples. Also give these tutorials in Chinese.</p>
+<p>Can u write a tutorial for <code>XmlHelper</code>? u can take the unit test code as some examples. Also give this tutorial in Chinese.</p>
+<p>Here is a Tutorial for <code>ConvertBasicValue</code>. Please write tutorial again for 'BytesHelper' like  <code>ConvertBasicValue</code> did.</p>
+<hr>
+<h1>ConvertBasicValue Tutorial</h1>
+<p>This tutorial provides an overview of the <code>ConvertBasicValue</code> class, which is part of the <code>lightweight-component/aj-util</code> library. <code>ConvertBasicValue</code> offers a collection of utility methods for converting objects to basic Java types. This guide will cover the purpose of each method and provide usage examples.</p>
+<h2>Introduction</h2>
+<p>The <code>ConvertBasicValue</code> class provides methods for safely converting objects to various basic Java types like <code>String</code>, <code>boolean</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>Date</code>, and <code>BigDecimal</code>. These methods handle null values and attempt to parse string representations where appropriate, providing a more robust alternative to direct casting.</p>
+<h2>Methods</h2>
+<h3>1. <code>basicCast(Object value, Class&lt;T&gt; clz)</code></h3>
+<p>Safely casts an object to a specified class type.  This method leverages <code>basicConvert</code> to perform the initial conversion and then casts the result to the desired type.</p>
+<ul>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>value</code>: The object to convert.</li>
+<li><code>clz</code>: The target class type.</li>
+</ul>
+</li>
+<li><strong>Returns:</strong> The converted object of type <code>T</code>.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">Integer intValue = ConvertBasicValue.basicCast(&quot;123&quot;, Integer.class);
+// intValue will be 123
+</code></pre>
+<h3>2. <code>basicConvert(Object value, Class&lt;?&gt; clz)</code></h3>
+<p>Converts an object to a specified class type. This method handles <code>null</code> values and performs type-specific conversions.</p>
+<ul>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>value</code>: The object to convert.</li>
+<li><code>clz</code>: The target class type.</li>
+</ul>
+</li>
+<li><strong>Returns:</strong> The converted object, or <code>null</code> if the input value is <code>null</code>.</li>
+</ul>
+<p>This method contains the core logic for different type conversions. Let's look at some of the specific conversions it handles:</p>
+<ul>
+<li><strong>String:</strong> Converts the object to a string using <code>value.toString()</code>.</li>
+<li><strong>boolean/Boolean:</strong> Converts the object to a boolean using the <code>toBoolean()</code> method (explained below).</li>
+<li><strong>int/Integer:</strong> Converts the object to an integer using the <code>object2int()</code> method (explained below).</li>
+<li><strong>long/Long:</strong> Converts the object to a long using the <code>object2long()</code> method (explained below).</li>
+<li><strong>float/Float:</strong> Converts the object to a float using the <code>object2float()</code> method.</li>
+<li><strong>double/Double:</strong> Converts the object to a double using the <code>object2double()</code> method.</li>
+<li><strong>Date:</strong> Converts the object to a Date using the <code>DateHelper.object2Date()</code> method.</li>
+<li><strong>BigDecimal:</strong> Converts the object to a BigDecimal if the value is a String or Number.</li>
+<li><strong>Array:</strong> Converts the object to an array using the <code>toArray()</code> method.</li>
+<li><strong>Enum:</strong> Converts the object to an enum.</li>
+</ul>
+<h3>3. <code>toBoolean(Object value)</code></h3>
+<p>Converts an object to a boolean. This method handles various input types, including strings, numbers, and booleans.</p>
+<ul>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>value</code>: The object to convert.</li>
+</ul>
+</li>
+<li><strong>Returns:</strong> The boolean value of the object.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-java">assertTrue(ConvertBasicValue.toBoolean(true));
+assertTrue(ConvertBasicValue.toBoolean(&quot;true&quot;));
+assertTrue(ConvertBasicValue.toBoolean(&quot;1&quot;));
+assertFalse(ConvertBasicValue.toBoolean(&quot;false&quot;));
+assertFalse(ConvertBasicValue.toBoolean(0));
+</code></pre>
+<h3>4. <code>object2int(Object value)</code></h3>
+<p>Converts an object to an integer. This method handles <code>null</code> values and attempts to parse string representations.</p>
+<ul>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>value</code>: The object to convert.</li>
+</ul>
+</li>
+<li><strong>Returns:</strong> The integer value of the object, or 0 if the input value is <code>null</code>.</li>
+<li><strong>Throws:</strong> <code>IllegalArgumentException</code> if the object cannot be converted to an integer.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-java">assertEquals(0, ConvertBasicValue.object2int(null));
+assertEquals(123, ConvertBasicValue.object2int(&quot;123&quot;));
+assertEquals(-456, ConvertBasicValue.object2int(&quot;-456&quot;));
+</code></pre>
+<h3>5. <code>object2long(Object value)</code></h3>
+<p>Converts an object to a long. This method handles <code>null</code> values and attempts to parse string representations.</p>
+<ul>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>value</code>: The object to convert.</li>
+</ul>
+</li>
+<li><strong>Returns:</strong> The long value of the object, or 0L if the input value is <code>null</code>.</li>
+<li><strong>Throws:</strong> <code>IllegalArgumentException</code> if the object cannot be converted to a long.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-java">assertEquals(0L, ConvertBasicValue.object2long(null));
+assertEquals(123L, ConvertBasicValue.object2long(&quot;123&quot;));
+assertEquals(-456L, ConvertBasicValue.object2long(&quot;-456&quot;));
+</code></pre>
+<h3>6. <code>object2double(Object value)</code></h3>
+<p>Converts an object to a double. This method handles <code>null</code> values and attempts to parse string representations.</p>
+<ul>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>value</code>: The object to convert.</li>
+</ul>
+</li>
+<li><strong>Returns:</strong> The double value of the object, or 0.0 if the input value is <code>null</code>.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-java">assertEquals(0.0, ConvertBasicValue.object2double(null), 0.0001);
+assertEquals(3.14, ConvertBasicValue.object2double(&quot;3.14&quot;), 0.0001);
+</code></pre>
+<h2>Conclusion</h2>
+<p>The <code>ConvertBasicValue</code> class provides a useful set of utilities for safely converting objects to basic Java types. By using these methods, you can simplify your code and handle potential <code>null</code> values and parsing errors more gracefully.  Remember to consult the library's Javadoc for the most up-to-date information and additional methods.</p>
+<pre><code></code></pre>

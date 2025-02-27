@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>AJ Utils-Quick Start</title>
+        <meta
+            name="description"
+            content="AJ Framework 一个基于 SpringMVC 构建的轻量级框架，旨在增强 SpringMVC 并使其更具 SpringBoot 的特性。它拥有许多小型组件，非常易于使用。"/>
+        <meta name="keywords" content="AJ Framework, ajaxjs, ajaxjs framework, java framework, web framewwork"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap&family=Noto+Sans+SC:wght@100..900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" /> 
+        <link rel="stylesheet" href="/style/docs/main.css"/>
+        <link rel="icon" type="image/x-icon" href="/asset/aj-docs/logo.ico"/>
+        <script src="/asset/docs/js/common.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <div class="links">
+                    <a href="/aj-util/cn">🏠 首页</a>
+                    | ⚙️ 源码:
+                    <a target="_blank" href="https://github.com/lightweight-component/aj-util">Github</a>/<a target="_blank" href="https://gitcode.com/lightweight-component/SqlMan/overview">Gitcode</a>
+                   | <a  href="/aj-util">英语版本</a>
+                </div>
+                <h1>
+                    <img src="/asset/aj-docs/logo.png" style="vertical-align: middle;height: 45px;margin-bottom: 6px;" /> 
+                    AJ Utils
+                </h1>
+                <h3>小型、干净、简单的 Java 工具库
+                </h3>
+            </div>
+        </nav>
+        <div>
+            <menu>
+                
+                <ul>
+                    <li class="selected">
+                        <a href="/aj-util/cn">首页</a>
+                    </li>
+                </ul>
+                <h3>Common 常用模块</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/common/BytesHelper-cn/">BytesHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/ConvertBasicValue-cn/">ConvertBasicValue</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EnumsUtil-cn/">EnumsUtil</a>
+                    </li>
+                    <li class="data">
+                        <a href="/aj-util/common/RandomTools-cn/">RandomTools</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/RegExpUtils-cn/">RegExpUtils</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/XmlHelper-cn/">XmlHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/MessageDigestHelper-cn/">MessageDigestHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EncodeTools-cn/">EncodeTools</a>
+                    </li>
+                </ul>
+                <h3>Input/Output 输入/输出</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/io/FileHelper-cn/">FileHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/Resources-cn/">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/StreamHelper-cn/">StreamHelper</a>
+                    </li>
+                </ul>
+                <h3>Reflection 反射</h3>
+                <ul>
+                    <li>
+                        <a href="/aj-util/reflect/Clazz-cn/">Clazz</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Methods-cn/">Methods</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Types-cn/">Types</a>
+                    </li>
+                </ul>
+            </menu>
+            <article>
+                <h1>EnumsUtil</h1>
+<p>当枚举实现 <code>IEnum</code> 接口时，<code>EnumsUtil</code> 类提供了一种基于代码检索枚举实例及其关联消息（或其他值）的方法。 当您拥有每个常量都有一个代码和相应描述性消息的枚举，并且需要通过其代码查找枚举时，这尤其有用。</p>
+<h2><code>IEnum</code> 接口</h2>
+<p>在深入了解 <code>EnumsUtil</code> 之前，让我们了解 <code>IEnum</code> 接口。 与 <code>EnumsUtil</code> 一起使用的枚举应实现此接口：</p>
+<pre><code class="language-java">package com.ajaxjs.util.enums;
+
+public interface IEnum&lt;E, V&gt; {
+    E getCode();
+    V getMsg();
+}
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>E</code> 是代码的类型（例如，<code>String</code>，<code>Integer</code>）。</li>
+<li><code>V</code> 是消息（或关联值）的类型。</li>
+</ul>
+<h2>方法</h2>
+<h3>1. <code>of(E code, Class&lt;T&gt; clz)</code></h3>
+<p>检索包含与给定代码匹配的枚举实例的 <code>Optional&lt;T&gt;</code>。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>code</code>：要搜索的代码。</li>
+<li><code>clz</code>：表示枚举类型的 <code>Class</code> 对象。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 如果找到，则返回包含枚举实例的 <code>Optional&lt;T&gt;</code>；如果未找到匹配的枚举，则返回 <code>Optional.empty()</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">Optional&lt;TypeEnum&gt; type = EnumsUtil.of(&quot;YES&quot;, TypeEnum.class);
+if (type.isPresent()) {
+    TypeEnum enumValue = type.get();
+    System.out.println(&quot;找到枚举： &quot; + enumValue);
+} else {
+    System.out.println(&quot;未找到代码 YES 的枚举&quot;);
+}
+</code></pre>
+<h3>2. <code>ofMsg(E code, Class&lt;T&gt; cla)</code></h3>
+<p>检索与给定代码匹配的枚举实例的消息（或关联值）。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>code</code>：要搜索的代码。</li>
+<li><code>cla</code>：表示枚举类型的 <code>Class</code> 对象。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 枚举实例的消息（或关联值）；如果未找到匹配的枚举，则返回 <code>null</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">String message = EnumsUtil.ofMsg(&quot;YES&quot;, TypeEnum.class);
+System.out.println(&quot;YES 的消息： &quot; + message); // 输出：YES 的消息： 是
+</code></pre>
+<h2>使用示例</h2>
+<p>这是一个完整的示例，包括枚举定义：</p>
+<pre><code class="language-java">import com.ajaxjs.util.enums.EnumsUtil;
+import com.ajaxjs.util.enums.IEnum;
+import java.util.Optional;
+
+public class Example {
+
+    public enum TypeEnum implements IEnum&lt;String, String&gt; {
+        YES(&quot;YES&quot;, &quot;是&quot;),
+        NO(&quot;NO&quot;, &quot;否&quot;);
+
+        private final String code;
+        private final String msg;
+
+        TypeEnum(String code, String msg) {
+            this.code = code;
+            this.msg = msg;
+        }
+
+        @Override
+        public String getCode() {
+            return this.code;
+        }
+
+        @Override
+        public String getMsg() {
+            return this.msg;
+        }
+    }
+
+    public static void main(String[] args) {
+        Optional&lt;TypeEnum&gt; type = EnumsUtil.of(&quot;YES&quot;, TypeEnum.class);
+        if (type.isPresent()) {
+            TypeEnum enumValue = type.get();
+            System.out.println(&quot;找到枚举： &quot; + enumValue);
+            System.out.println(&quot;代码： &quot; + enumValue.getCode());
+            System.out.println(&quot;消息： &quot; + enumValue.getMsg());
+        } else {
+            System.out.println(&quot;未找到代码 YES 的枚举&quot;);
+        }
+
+        String message = EnumsUtil.ofMsg(&quot;NO&quot;, TypeEnum.class);
+        System.out.println(&quot;NO 的消息： &quot; + message);
+    }
+}
+</code></pre>
+<h2>单元测试示例</h2>
+<p>这是单元测试代码：</p>
+<pre><code class="language-java">package com.ajaxjs.util.enums;
+
+import org.junit.jupiter.api.Test;
+
+public class TestEnumsUtil {
+    public enum TypeEnum implements IEnum&lt;String, String&gt; {
+        YES(&quot;YES&quot;, &quot;是&quot;),
+        NO(&quot;NO&quot;, &quot;否&quot;);
+
+        private final String code;
+        private final String msg;
+
+        TypeEnum(String code, String msg) {
+            this.code = code;
+            this.msg = msg;
+        }
+
+        @Override
+        public String getCode() {
+            return this.code;
+        }
+
+        @Override
+        public String getMsg() {
+            return this.msg;
+        }
+    }
+
+    @Test
+    public void test() {
+        System.out.println(EnumsUtil.ofMsg(&quot;YES&quot;, TypeEnum.class));
+    }
+}
+</code></pre>
+<h2>结论</h2>
+<p><code>EnumsUtil</code> 类提供了一种方便的方式来处理实现 <code>IEnum</code> 接口的枚举，从而允许您基于代码轻松检索枚举实例及其关联值。 这在需要将代码映射到枚举值及其相应消息的应用程序中尤其有用。</p>
+<p><strong>重要提示：</strong> 搜索结果可能不完整。 要查看更多结果，您可以使用此链接：<a href="https://github.com/lightweight-component/aj-util/search?q=symbol%3AEnumsUtil">https://github.com/lightweight-component/aj-util/search?q=symbol%3AEnumsUtil</a> 在 GitHub UI 中。</p>
+
+            </article>
+        </div>
+
+       <footer>
+            AJ-Util，开源框架 <a href="https://framework.ajaxjs.com" target="_blank">AJ-Framework</a> 的一部分。联系方式：
+            frank@ajaxjs.com，<a href="https://blog.csdn.net/zhangxin09" target="_blank">作者博客</a>
+            <br />
+            <br />
+            Copyright © 2025 Frank Cheung. All rights reserved.
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>AJ Utils-Quick Start</title>
+        <meta
+            name="description"
+            content="AJ Framework 一个基于 SpringMVC 构建的轻量级框架，旨在增强 SpringMVC 并使其更具 SpringBoot 的特性。它拥有许多小型组件，非常易于使用。"/>
+        <meta name="keywords" content="AJ Framework, ajaxjs, ajaxjs framework, java framework, web framewwork"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap&family=Noto+Sans+SC:wght@100..900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" /> 
+        <link rel="stylesheet" href="/style/docs/main.css"/>
+        <link rel="icon" type="image/x-icon" href="/asset/aj-docs/logo.ico"/>
+        <script src="/asset/docs/js/common.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <div class="links">
+                    <a href="/aj-util/cn">🏠 首页</a>
+                    | ⚙️ 源码:
+                    <a target="_blank" href="https://github.com/lightweight-component/aj-util">Github</a>/<a target="_blank" href="https://gitcode.com/lightweight-component/SqlMan/overview">Gitcode</a>
+                   | <a  href="/aj-util">英语版本</a>
+                </div>
+                <h1>
+                    <img src="/asset/aj-docs/logo.png" style="vertical-align: middle;height: 45px;margin-bottom: 6px;" /> 
+                    AJ Utils
+                </h1>
+                <h3>小型、干净、简单的 Java 工具库
+                </h3>
+            </div>
+        </nav>
+        <div>
+            <menu>
+                
+                <ul>
+                    <li class="selected">
+                        <a href="/aj-util/cn">首页</a>
+                    </li>
+                </ul>
+                <h3>Common 常用模块</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/common/BytesHelper-cn/">BytesHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/ConvertBasicValue-cn/">ConvertBasicValue</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EnumsUtil-cn/">EnumsUtil</a>
+                    </li>
+                    <li class="data">
+                        <a href="/aj-util/common/RandomTools-cn/">RandomTools</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/RegExpUtils-cn/">RegExpUtils</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/XmlHelper-cn/">XmlHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/MessageDigestHelper-cn/">MessageDigestHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EncodeTools-cn/">EncodeTools</a>
+                    </li>
+                </ul>
+                <h3>Input/Output 输入/输出</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/io/FileHelper-cn/">FileHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/Resources-cn/">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/StreamHelper-cn/">StreamHelper</a>
+                    </li>
+                </ul>
+                <h3>Reflection 反射</h3>
+                <ul>
+                    <li>
+                        <a href="/aj-util/reflect/Clazz-cn/">Clazz</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Methods-cn/">Methods</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Types-cn/">Types</a>
+                    </li>
+                </ul>
+            </menu>
+            <article>
+                <h1>ConvertBasicValue 教程</h1>
+<p>本教程旨在介绍 <code>lightweight-component/aj-util</code> 库中的 <code>ConvertBasicValue</code> 类。<code>ConvertBasicValue</code> 提供了一组实用工具方法，用于将对象安全地转换为基本的 Java 数据类型。本指南将详细介绍每个方法的目的，并提供相应的用法示例。</p>
+<h2>引言</h2>
+<p><code>ConvertBasicValue</code> 类提供了一系列方法，可以将对象安全地转换为各种基本 Java 类型，例如 <code>String</code>、<code>boolean</code>、<code>int</code>、<code>long</code>、<code>float</code>、<code>double</code>、<code>Date</code> 和 <code>BigDecimal</code>。 这些方法能够处理空值（null），并在适当的情况下尝试解析字符串表示形式，从而为直接类型转换提供了一种更强大的替代方案。</p>
+<h2>方法详解</h2>
+<h3>1. <code>basicCast(Object value, Class&lt;T&gt; clz)</code></h3>
+<p>安全地将对象强制转换为指定的类类型。 此方法利用 <code>basicConvert</code> 执行初始转换，然后将结果强制转换为所需的类型。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>value</code>: 要转换的对象。</li>
+<li><code>clz</code>: 目标类类型。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 转换为 <code>T</code> 类型的对象。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">Integer intValue = ConvertBasicValue.basicCast(&quot;123&quot;, Integer.class);
+// intValue 的值为 123
+</code></pre>
+<h3>2. <code>basicConvert(Object value, Class&lt;?&gt; clz)</code></h3>
+<p>将对象转换为指定的类类型。 此方法处理 <code>null</code> 值并执行特定于类型的转换。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>value</code>: 要转换的对象。</li>
+<li><code>clz</code>: 目标类类型。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 转换后的对象；如果输入值为 <code>null</code>，则返回 <code>null</code>。</li>
+</ul>
+<p>此方法包含不同类型转换的核心逻辑。 让我们看看它处理的一些特定转换：</p>
+<ul>
+<li><strong>String：</strong> 使用 <code>value.toString()</code> 将对象转换为字符串。</li>
+<li><strong>boolean/Boolean：</strong> 使用 <code>toBoolean()</code> 方法（如下所述）将对象转换为布尔值。</li>
+<li><strong>int/Integer：</strong> 使用 <code>object2int()</code> 方法（如下所述）将对象转换为整数。</li>
+<li><strong>long/Long：</strong> 使用 <code>object2long()</code> 方法（如下所述）将对象转换为长整数。</li>
+<li><strong>float/Float：</strong> 使用 <code>object2float()</code> 方法将对象转换为浮点数。</li>
+<li><strong>double/Double：</strong> 使用 <code>object2double()</code> 方法将对象转换为双精度浮点数。</li>
+<li><strong>Date：</strong> 使用 <code>DateHelper.object2Date()</code> 方法将对象转换为 Date 对象。</li>
+<li><strong>BigDecimal：</strong> 如果值为 String 或 Number，则将对象转换为 BigDecimal。</li>
+<li><strong>Array：</strong> 使用 <code>toArray()</code> 方法将对象转换为数组。</li>
+<li><strong>Enum：</strong> 将对象转换为枚举。</li>
+</ul>
+<h3>3. <code>toBoolean(Object value)</code></h3>
+<p>将对象转换为布尔值。 此方法处理各种输入类型，包括字符串、数字和布尔值。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>value</code>: 要转换的对象。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 对象的布尔值。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">assertTrue(ConvertBasicValue.toBoolean(true));
+assertTrue(ConvertBasicValue.toBoolean(&quot;true&quot;));
+assertTrue(ConvertBasicValue.toBoolean(&quot;1&quot;));
+assertFalse(ConvertBasicValue.toBoolean(&quot;false&quot;));
+assertFalse(ConvertBasicValue.toBoolean(0));
+</code></pre>
+<h3>4. <code>object2int(Object value)</code></h3>
+<p>将对象转换为整数。 此方法处理 <code>null</code> 值并尝试解析字符串表示形式。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>value</code>: 要转换的对象。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 对象的整数值；如果输入值为 <code>null</code>，则返回 0。</li>
+<li><strong>抛出：</strong> 如果对象无法转换为整数，则抛出 <code>IllegalArgumentException</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">assertEquals(0, ConvertBasicValue.object2int(null));
+assertEquals(123, ConvertBasicValue.object2int(&quot;123&quot;));
+assertEquals(-456, ConvertBasicValue.object2int(&quot;-456&quot;));
+</code></pre>
+<h3>5. <code>object2long(Object value)</code></h3>
+<p>将对象转换为长整数。 此方法处理 <code>null</code> 值并尝试解析字符串表示形式。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>value</code>: 要转换的对象。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 对象的长整数值；如果输入值为 <code>null</code>，则返回 0L。</li>
+<li><strong>抛出：</strong> 如果对象无法转换为长整数，则抛出 <code>IllegalArgumentException</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">assertEquals(0L, ConvertBasicValue.object2long(null));
+assertEquals(123L, ConvertBasicValue.object2long(&quot;123&quot;));
+assertEquals(-456L, ConvertBasicValue.object2long(&quot;-456&quot;));
+</code></pre>
+<h3>6. <code>object2double(Object value)</code></h3>
+<p>将对象转换为双精度浮点数。 此方法处理 <code>null</code> 值并尝试解析字符串表示形式。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>value</code>: 要转换的对象。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 对象的双精度浮点数值；如果输入值为 <code>null</code>，则返回 0.0。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">assertEquals(0.0, ConvertBasicValue.object2double(null), 0.0001);
+assertEquals(3.14, ConvertBasicValue.object2double(&quot;3.14&quot;), 0.0001);
+</code></pre>
+<h2>单元测试示例</h2>
+<p>以下是单元测试中的一些示例：</p>
+<pre><code class="language-java">import org.junit.jupiter.api.Test;
+import static com.ajaxjs.util.ConvertBasicValue.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TestConvertBasicValue {
+    @Test
+    public void testToBoolean() {
+        assertTrue(toBoolean(true));
+        assertTrue(toBoolean(&quot;true&quot;));
+        assertTrue(toBoolean(&quot;True&quot;));
+
+        assertFalse(toBoolean(&quot;fAlse&quot;));
+        assertFalse(toBoolean(&quot;null&quot;));
+
+        assertTrue(toBoolean(&quot;on&quot;));
+        assertTrue(toBoolean(&quot;yes&quot;));
+        assertTrue(toBoolean(1));
+        assertTrue(toBoolean(&quot;1&quot;));
+    }
+
+    @Test
+    public void testObject2Int() {
+        assertEquals(0, object2int(null));
+        assertEquals(100, object2int(100));
+        assertEquals(123, object2int(&quot;123&quot;));
+    }
+
+    @Test
+    public void testObject2Long() {
+        assertEquals(0L, object2long(null));
+        assertEquals(100L, object2long(100L));
+        assertEquals(123L, object2long(&quot;123&quot;));
+    }
+
+    @Test
+    public void testObject2Double() {
+        assertEquals(0.0, object2double(null), 0.0001);
+        assertEquals(3.14, object2double(3.14), 0.0001);
+    }
+}
+</code></pre>
+<h2>总结</h2>
+<p><code>ConvertBasicValue</code> 类提供了一组有用的实用工具，用于将对象安全地转换为基本的 Java 类型。 通过使用这些方法，您可以简化代码并更优雅地处理潜在的 <code>null</code> 值和解析错误。 请记住查阅库的 Javadoc 以获取最新信息和其他方法。</p>
+
+            </article>
+        </div>
+
+       <footer>
+            AJ-Util，开源框架 <a href="https://framework.ajaxjs.com" target="_blank">AJ-Framework</a> 的一部分。联系方式：
+            frank@ajaxjs.com，<a href="https://blog.csdn.net/zhangxin09" target="_blank">作者博客</a>
+            <br />
+            <br />
+            Copyright © 2025 Frank Cheung. All rights reserved.
+        </footer>
+    </body>
+</html>

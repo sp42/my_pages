@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>AJ Utils-Quick Start</title>
+        <meta
+            name="description"
+            content="AJ Framework 一个基于 SpringMVC 构建的轻量级框架，旨在增强 SpringMVC 并使其更具 SpringBoot 的特性。它拥有许多小型组件，非常易于使用。"/>
+        <meta name="keywords" content="AJ Framework, ajaxjs, ajaxjs framework, java framework, web framewwork"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap&family=Noto+Sans+SC:wght@100..900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" /> 
+        <link rel="stylesheet" href="/style/docs/main.css"/>
+        <link rel="icon" type="image/x-icon" href="/asset/aj-docs/logo.ico"/>
+        <script src="/asset/docs/js/common.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <div class="links">
+                    <a href="/aj-util/cn">🏠 首页</a>
+                    | ⚙️ 源码:
+                    <a target="_blank" href="https://github.com/lightweight-component/aj-util">Github</a>/<a target="_blank" href="https://gitcode.com/lightweight-component/SqlMan/overview">Gitcode</a>
+                   | <a  href="/aj-util">英语版本</a>
+                </div>
+                <h1>
+                    <img src="/asset/aj-docs/logo.png" style="vertical-align: middle;height: 45px;margin-bottom: 6px;" /> 
+                    AJ Utils
+                </h1>
+                <h3>小型、干净、简单的 Java 工具库
+                </h3>
+            </div>
+        </nav>
+        <div>
+            <menu>
+                
+                <ul>
+                    <li class="selected">
+                        <a href="/aj-util/cn">首页</a>
+                    </li>
+                </ul>
+                <h3>Common 常用模块</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/common/BytesHelper-cn/">BytesHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/ConvertBasicValue-cn/">ConvertBasicValue</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EnumsUtil-cn/">EnumsUtil</a>
+                    </li>
+                    <li class="data">
+                        <a href="/aj-util/common/RandomTools-cn/">RandomTools</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/RegExpUtils-cn/">RegExpUtils</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/XmlHelper-cn/">XmlHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/MessageDigestHelper-cn/">MessageDigestHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EncodeTools-cn/">EncodeTools</a>
+                    </li>
+                </ul>
+                <h3>Input/Output 输入/输出</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/io/FileHelper-cn/">FileHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/Resources-cn/">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/StreamHelper-cn/">StreamHelper</a>
+                    </li>
+                </ul>
+                <h3>Reflection 反射</h3>
+                <ul>
+                    <li>
+                        <a href="/aj-util/reflect/Clazz-cn/">Clazz</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Methods-cn/">Methods</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Types-cn/">Types</a>
+                    </li>
+                </ul>
+            </menu>
+            <article>
+                <h1>XmlHelper</h1>
+<p><code>XmlHelper</code> 类提供了用于解析 XML 文档、检索元素以及将节点转换为映射的方法。这些方法可用于处理和操作 XML 数据。</p>
+<h2>方法</h2>
+<h3>1. <code>initBuilder()</code></h3>
+<p>初始化一个用于 XML 解析的 <code>DocumentBuilder</code>。</p>
+<ul>
+<li><strong>返回值:</strong> 一个 <code>DocumentBuilder</code> 实例。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<pre><code class="language-java">DocumentBuilder builder = XmlHelper.initBuilder();
+// builder 将是一个新的 DocumentBuilder 实例
+</code></pre>
+<h3>2. <code>xPath(String xml, String xpath, Consumer&lt;Node&gt; fn)</code></h3>
+<p>使用 XPath 表达式从 XML 文档中检索节点，并使用给定的函数处理它们。</p>
+<ul>
+<li><strong>参数说明：</strong>
+<ul>
+<li><code>xml</code>: XML 文件的路径。</li>
+<li><code>xpath</code>: 用于定位节点的 XPath 表达式。</li>
+<li><code>fn</code>: 用于处理节点的函数。</li>
+</ul>
+</li>
+<li><strong>返回值:</strong> 无。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<pre><code class="language-java">XmlHelper.xPath(&quot;path/to/xml/file.xml&quot;, &quot;/root/element&quot;, node -&gt; {
+    // 处理节点
+    System.out.println(node.getTextContent());
+});
+</code></pre>
+<h3>3. <code>parseXML(String xml, BiConsumer&lt;Node, NodeList&gt; fn)</code></h3>
+<p>解析 XML 字符串，并使用给定的函数处理根元素及其子元素。</p>
+<ul>
+<li><strong>参数说明：</strong>
+<ul>
+<li><code>xml</code>: XML 内容的字符串。</li>
+<li><code>fn</code>: 用于处理根元素及其子元素的函数。</li>
+</ul>
+</li>
+<li><strong>返回值:</strong> 无。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<pre><code class="language-java">String xmlContent = &quot;&lt;root&gt;&lt;child&gt;Content&lt;/child&gt;&lt;/root&gt;&quot;;
+XmlHelper.parseXML(xmlContent, (node, nodeList) -&gt; {
+    // 处理根元素及其子元素
+    System.out.println(node.getNodeName());
+    for (int i = 0; i &lt; nodeList.getLength(); i++) {
+        System.out.println(nodeList.item(i).getTextContent());
+    }
+});
+</code></pre>
+<h3>4. <code>getRoot(String xml)</code></h3>
+<p>检索 XML 字符串的根元素。</p>
+<ul>
+<li><strong>参数说明：</strong>
+<ul>
+<li><code>xml</code>: XML 内容的字符串。</li>
+</ul>
+</li>
+<li><strong>返回值:</strong> 根元素。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<pre><code class="language-java">String xmlContent = &quot;&lt;root&gt;&lt;child&gt;Content&lt;/child&gt;&lt;/root&gt;&quot;;
+Element root = XmlHelper.getRoot(xmlContent);
+// root 将是 &lt;root&gt; 元素
+</code></pre>
+<h3>5. <code>nodeAsMap(String xml, String xpath)</code></h3>
+<p>将节点的属性转换为映射。</p>
+<ul>
+<li><strong>参数说明：</strong>
+<ul>
+<li><code>xml</code>: XML 文件的路径。</li>
+<li><code>xpath</code>: 用于定位节点的 XPath 表达式。</li>
+</ul>
+</li>
+<li><strong>返回值:</strong> 节点属性的映射。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<pre><code class="language-java">Map&lt;String, String&gt; attributes = XmlHelper.nodeAsMap(&quot;path/to/xml/file.xml&quot;, &quot;/root/element&quot;);
+// attributes 将包含 &lt;element&gt; 节点的属性
+</code></pre>
+
+            </article>
+        </div>
+
+       <footer>
+            AJ-Util，开源框架 <a href="https://framework.ajaxjs.com" target="_blank">AJ-Framework</a> 的一部分。联系方式：
+            frank@ajaxjs.com，<a href="https://blog.csdn.net/zhangxin09" target="_blank">作者博客</a>
+            <br />
+            <br />
+            Copyright © 2025 Frank Cheung. All rights reserved.
+        </footer>
+    </body>
+</html>

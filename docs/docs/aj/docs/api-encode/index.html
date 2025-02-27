@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>SqlMan - API 加密/解密</title>
+        <meta
+            name="description"
+            content="AJ Framework 一个基于 SpringMVC 构建的轻量级框架，旨在增强 SpringMVC 并使其更具 SpringBoot 的特性。它拥有许多小型组件，非常易于使用。"/>
+        <meta name="keywords" content="AJ Framework, ajaxjs, ajaxjs framework, java framework, web framewwork"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+        <link rel="stylesheet" href="/style/docs/main.css"/>
+        <link rel="icon" type="image/png" href="/asset/favicon.png"/>
+        <script src="/asset/docs/js/common.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <div class="links">
+                    <a href="/">🏠 Home</a>
+                    |
+                                    ⚙️ Source:
+                    <a target="_blank" href="https://github.com/lightweight-component/SqlMan">Github</a>/<a target="_blank" href="https://gitcode.com/lightweight-component/SqlMan/overview">Gitcode</a>
+                    |
+                    <a href="/docs/common/contact">✉️ Contact</a>
+                </div>
+                <h1>
+                    <img src="/asset/favicon-2x.png" style="vertical-align: middle;height: 45px;margin-bottom: 6px;" /> 
+                    SqlMan
+                </h1>
+                <h3>Lightweight Data Access Tools -- User Manual
+                </h3>
+            </div>
+        </nav>
+        <div>
+            <menu>
+                
+                <ul>
+                    <li class="selected">
+                        <a href="/docs">Home</a>
+                    </li>
+                    <li>
+                        <a href="/docs/quick-start">Quick Start</a>
+                    </li>
+                    <li>
+                        <a href="/docs/setup">Setup</a>
+                    </li>
+                </ul>
+                <h3>Run SQL</h3>
+                <ul>
+                    <li>
+                        <a href="pages/api/init.html">初始化一个项目</a>
+                    </li>
+                    <li>
+                        <a href="pages/api/controller.html">基于 Java 接口的控制器</a>
+                    </li>
+                    <li>
+                        <a href="pages/api/config.html">相关配置</a>
+                    </li>
+                    <li>
+                        <a href="pages/api/package.html">打包与部署</a>
+                    </li>
+                </ul>
+                <h3>Run as Entity</h3>
+                <ul>
+                    <li class="data">
+                        <a href="pages/data/conn.html">连接数据库</a>
+                    </li>
+                    <li>
+                        <a href="pages/data/crud.html">增删改查 CRUD</a>
+                    </li>
+                    <li>
+                        <a href="pages/data/xml.html">XML 管理 SQL</a>
+                    </li>
+                    <li>
+                        <a href="pages/data/bean-validator.html">Bean 实体校验</a>
+                    </li>
+                </ul>
+                <h3>Low Code</h3>
+                <ul>
+                    <li>
+                        <a href="../../widgets">小部件 Widgets</a>
+                    </li>
+                </ul>
+                <h3>Advanced</h3>
+                <ul>
+                    <li>
+                        <a href="../../widgets">小部件 Widgets</a>
+                    </li>
+                </ul>
+                <h3>Misc</h3>
+                <ul>
+                    <li><a href="/docs/common/versions">Release History</a></li>
+                    <li><a href="/docs/common/contact">Contact</a></li>
+                </ul>
+            </menu>
+            <article>
+                <h1>API 接口加密/解密</h1>
+<p>为了安全性需要对接口的数据进行加密处理，不能明文暴露数据。对于接口的行为，分别有：</p>
+<ul>
+<li>入参，对传过来的加密参数解密。接口处理客户端提交的参数时候，这里统一约定对 HTTP Raw Body 提交的数据（已加密的密文），转换为 JSON 处理，这是最常见的提交方式。其他 QueryString、标准 Form、HTTP Header 的入参则不支持。</li>
+<li>出参，对返回值进行加密。接口统一返回加密后的 JSON 结果。</li>
+</ul>
+<p>有人把加密结果原文输出，如下图所示：</p>
+<p><img src="/asset/docs/temp/1.png" alt="">
+但笔者觉得那是一种反模式，而保留原有 JSON 结果更好，也符合既有的统一返回结果，即把<code>data</code>数据加密，其他<code>code</code>、<code>msg</code>等的正常显示。如下提交的 JSON。</p>
+<pre><code class="language-json">{
+    &quot;errCode&quot;: &quot;0&quot;,
+    &quot;data&quot;: &quot;BQduoGH4PI+6jxgu+6S2FWu5c/vHd+041ITnCH9JulUKpPX8BvRTvBNYfP7……&quot;
+}
+</code></pre>
+<h2>加密算法</h2>
+<p>加密算法需要调用方（如浏览器）与 API 接口协商好。一般采用 RSA 加密算法。虽然 RSA 没 AES 速度高，但胜在是非对称加密，AES 这种对称加密机制在这场合就不适用了（因为浏览器是不能放置任何密钥的，——除非放置非对称的公钥）。</p>
+<p>当然，如果你设计的 API 接口给其他第三方调用而不是浏览器，可以保证密钥安全的话，那么使用 AES 也可以，包括其他摘要算法同理亦可，大家商定好算法（md5/sha1/sha256……）和盐值（Slat）即可。</p>
+<p>该组件当前仅支持 RSA（1024bit key）。下面更多的算法在路上。</p>
+<ul>
+<li>RSA（512/2048……）</li>
+<li>AES</li>
+<li>MD5/SHA1/SHA256…… with Slat</li>
+</ul>
+<h1>使用方式</h1>
+<p>首先观察这个 Spring MVC 接口声明，与一般的 JSON 提交数据方式无异，仍然需要注解<code>@RequestBody</code>：</p>
+<pre><code>@PostMapping(&quot;/submit&quot;)
+boolean jsonSubmit(@RequestBody User user);
+</code></pre>
+<p>重点是 User 这个 DTO，为了标明是加密数据，需要在这个 Bean 上声明我们自定义的注解<code>@EncryptedData</code>：</p>
+<pre><code class="language-java">package com.ajaxjs.api.encryptedbody;
+
+@EncryptedData
+public class User {
+    private String name;
+    private int age;
+
+    // Getters and Setters
+}
+</code></pre>
+<p>同时我们提交的对象不再是 User 的 JSON，而是<code>DecodeDTO</code>（虽然最终转换为<code>User</code>，成功解密的话），即:</p>
+<pre><code class="language-java">package com.ajaxjs.api.encryptedbody;
+
+import lombok.Data;
+
+@Data
+public class DecodeDTO {
+    /**
+     * Encrypted data
+     */
+    private String data;
+}
+</code></pre>
+<p>当然你可以修改这个 DTO 为你符合的结构。提交的样子就是像:</p>
+<pre><code class="language-json">{
+    &quot;data&quot;: &quot;BQduoGH4PI+6jxgu+6S2FWu5c/vHd+041ITnCH9JulUKpPX8BvRTvBNYfP7……&quot;
+}
+</code></pre>
+<p>这个加密过的密文怎么来的？当然是你客户端加密后的结果。</p>
+<h2>初始化</h2>
+<p>在 YAML 配置中加入：</p>
+<pre><code class="language-yaml">api:
+  EncryptedBody:
+    privateKey: MIICdgIBADANBgkqhkiG9w0BAQ……
+</code></pre>
+<p>主要是 RSA 的私钥。然后在 Spring 配置类中加入：</p>
+<pre><code class="language-java">@Value(&quot;${api.EncryptedBody.privateKey}&quot;)
+private String apiPrivateKey;
+
+@Override
+public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
+    converters.add(0, new EncryptedBodyConverter(apiPrivateKey));
+}
+</code></pre>
+
+            </article>
+        </div>
+
+        <footer>
+    SqlMan, a part of <a href="https://www.cnblogs.com/frankcheung/">AJ-Framework</a>, author: Frank Cheung, mail:
+    frank@ajaxjs.com, visit <a href="https://www.cnblogs.com/frankcheung/">my tech blog(In Chinese)</a>.
+    <br />
+    <br />
+     Copyright © 2025 Frank Cheung. All rights reserved.
+</footer>
+    </body>
+</html>

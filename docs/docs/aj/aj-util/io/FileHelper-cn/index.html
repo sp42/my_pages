@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>AJ Utils-Quick Start</title>
+        <meta
+            name="description"
+            content="AJ Framework 一个基于 SpringMVC 构建的轻量级框架，旨在增强 SpringMVC 并使其更具 SpringBoot 的特性。它拥有许多小型组件，非常易于使用。"/>
+        <meta name="keywords" content="AJ Framework, ajaxjs, ajaxjs framework, java framework, web framewwork"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap&family=Noto+Sans+SC:wght@100..900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" /> 
+        <link rel="stylesheet" href="/style/docs/main.css"/>
+        <link rel="icon" type="image/x-icon" href="/asset/aj-docs/logo.ico"/>
+        <script src="/asset/docs/js/common.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <div class="links">
+                    <a href="/aj-util/cn">🏠 首页</a>
+                    | ⚙️ 源码:
+                    <a target="_blank" href="https://github.com/lightweight-component/aj-util">Github</a>/<a target="_blank" href="https://gitcode.com/lightweight-component/SqlMan/overview">Gitcode</a>
+                   | <a  href="/aj-util">英语版本</a>
+                </div>
+                <h1>
+                    <img src="/asset/aj-docs/logo.png" style="vertical-align: middle;height: 45px;margin-bottom: 6px;" /> 
+                    AJ Utils
+                </h1>
+                <h3>小型、干净、简单的 Java 工具库
+                </h3>
+            </div>
+        </nav>
+        <div>
+            <menu>
+                
+                <ul>
+                    <li class="selected">
+                        <a href="/aj-util/cn">首页</a>
+                    </li>
+                </ul>
+                <h3>Common 常用模块</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/common/BytesHelper-cn/">BytesHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/ConvertBasicValue-cn/">ConvertBasicValue</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EnumsUtil-cn/">EnumsUtil</a>
+                    </li>
+                    <li class="data">
+                        <a href="/aj-util/common/RandomTools-cn/">RandomTools</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/RegExpUtils-cn/">RegExpUtils</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/XmlHelper-cn/">XmlHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/MessageDigestHelper-cn/">MessageDigestHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EncodeTools-cn/">EncodeTools</a>
+                    </li>
+                </ul>
+                <h3>Input/Output 输入/输出</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/io/FileHelper-cn/">FileHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/Resources-cn/">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/StreamHelper-cn/">StreamHelper</a>
+                    </li>
+                </ul>
+                <h3>Reflection 反射</h3>
+                <ul>
+                    <li>
+                        <a href="/aj-util/reflect/Clazz-cn/">Clazz</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Methods-cn/">Methods</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Types-cn/">Types</a>
+                    </li>
+                </ul>
+            </menu>
+            <article>
+                <h1>FileHelper</h1>
+<p><code>FileHelper</code> 类简化了常见的文件系统操作，例如读取和写入文件内容、删除文件或目录、列出目录内容、创建目录以及检查文件或目录是否存在。 它利用 <code>java.nio.file</code> 包来实现高效且现代的文件 I/O。</p>
+<h2>方法</h2>
+<h3>1. <code>readFileContent(String filePath)</code></h3>
+<p>将文件的全部内容读取到字符串中。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>filePath</code>：文件的路径。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 文件的内容，以字符串形式表示。</li>
+<li><strong>抛出：</strong> 如果在文件读取期间发生错误，则抛出 <code>UncheckedIOException</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">String content = FileHelper.readFileContent(&quot;path/to/my/file.txt&quot;);
+System.out.println(content);
+</code></pre>
+<h3>2. <code>writeFileContent(String filePath, String content)</code></h3>
+<p>将字符串写入文件，覆盖任何现有内容。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>filePath</code>：文件的路径。</li>
+<li><code>content</code>：要写入文件的字符串。</li>
+</ul>
+</li>
+<li><strong>抛出：</strong> 如果在文件写入期间发生错误，则抛出 <code>UncheckedIOException</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">FileHelper.writeFileContent(&quot;path/to/my/file.txt&quot;, &quot;你好，世界！&quot;);
+</code></pre>
+<h3>3. <code>deleteFileOrDirectory(String filePath)</code></h3>
+<p>删除文件或目录。 如果路径是目录，它将递归删除其中的所有文件和子目录。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>filePath</code>：文件或目录的路径。</li>
+</ul>
+</li>
+<li><strong>抛出：</strong> 如果在删除期间发生错误，则抛出 <code>UncheckedIOException</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">FileHelper.deleteFileOrDirectory(&quot;path/to/my/file.txt&quot;);
+FileHelper.deleteFileOrDirectory(&quot;path/to/my/directory&quot;);
+</code></pre>
+<h3>4. <code>listDirectoryContents(String directoryPath)</code></h3>
+<p>列出目录中文件和子目录的名称。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>directoryPath</code>：目录的路径。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 字符串列表，其中每个字符串是文件或子目录的名称。</li>
+<li><strong>抛出：</strong> 如果在目录列表期间发生错误，则抛出 <code>UncheckedIOException</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">List&lt;String&gt; contents = FileHelper.listDirectoryContents(&quot;path/to/my/directory&quot;);
+for (String item : contents) {
+    System.out.println(item);
+}
+</code></pre>
+<h3>5. <code>createDirectory(String directoryPath)</code></h3>
+<p>创建目录，包括任何必要的父目录。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>directoryPath</code>：要创建的目录的路径。</li>
+</ul>
+</li>
+<li><strong>抛出：</strong> 如果在目录创建期间发生错误，则抛出 <code>UncheckedIOException</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">FileHelper.createDirectory(&quot;path/to/my/new/directory&quot;);
+</code></pre>
+<h3>6. <code>exists(String filePath)</code></h3>
+<p>检查文件或目录是否存在。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>filePath</code>：文件或目录的路径。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 如果文件或目录存在，则返回 <code>true</code>；否则返回 <code>false</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">boolean exists = FileHelper.exists(&quot;path/to/my/file.txt&quot;);
+if (exists) {
+    System.out.println(&quot;文件存在！&quot;);
+} else {
+    System.out.println(&quot;文件不存在。&quot;);
+}
+</code></pre>
+<h2>单元测试示例</h2>
+<p>以下是如何在单元测试中使用 <code>FileHelper</code> 的示例：</p>
+<pre><code class="language-java">package com.ajaxjs.util.io;
+
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.util.List;
+
+public class TestFileHelper {
+    final String dir = Resources.getResourcesFromClass(TestFileHelper.class, &quot;&quot;);
+    final String fullPath = dir + File.separator + &quot;test.txt&quot;;
+
+    @Test
+    public void test() {
+        // 读取文件内容
+        String content = FileHelper.readFileContent(fullPath);
+        System.out.println(&quot;文件内容: &quot; + content);
+
+        // 写入文件内容
+        FileHelper.writeFileContent(fullPath, &quot;你好，世界！Hello, World!&quot;);
+
+        // 列出目录内容
+        List&lt;String&gt; directoryContents = FileHelper.listDirectoryContents(dir);
+        System.out.println(&quot;目录内容: &quot; + directoryContents);
+
+        // 创建目录
+        FileHelper.createDirectory(dir + File.separator + &quot;newdirectory&quot;);
+
+        // 检查文件或目录是否存在
+        boolean exists = FileHelper.exists(fullPath);
+        System.out.println(&quot;文件是否存在: &quot; + exists);
+
+        // 删除文件或目录 - 已注释掉，以防止在测试期间意外删除
+        // FileHelper.deleteFileOrDirectory(&quot;output.txt&quot;);
+    }
+}
+</code></pre>
+<p><strong>注意：</strong> <code>getFileSize()</code>、<code>copyFileOrDirectory()</code> 和 <code>moveFileOrDirectory()</code> 方法存在于测试代码中，但不存在于提供的 <code>FileHelper</code> 类代码中。</p>
+<h2>结论</h2>
+<p><code>FileHelper</code> 类提供了一组方便的实用程序，用于在 Java 中执行常见的文件系统操作。 通过使用这些方法，您可以简化代码并避免编写重复的文件 I/O 逻辑。</p>
+
+            </article>
+        </div>
+
+       <footer>
+            AJ-Util，开源框架 <a href="https://framework.ajaxjs.com" target="_blank">AJ-Framework</a> 的一部分。联系方式：
+            frank@ajaxjs.com，<a href="https://blog.csdn.net/zhangxin09" target="_blank">作者博客</a>
+            <br />
+            <br />
+            Copyright © 2025 Frank Cheung. All rights reserved.
+        </footer>
+    </body>
+</html>

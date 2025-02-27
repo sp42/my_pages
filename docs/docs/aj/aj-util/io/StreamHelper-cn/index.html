@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>AJ Utils-Quick Start</title>
+        <meta
+            name="description"
+            content="AJ Framework 一个基于 SpringMVC 构建的轻量级框架，旨在增强 SpringMVC 并使其更具 SpringBoot 的特性。它拥有许多小型组件，非常易于使用。"/>
+        <meta name="keywords" content="AJ Framework, ajaxjs, ajaxjs framework, java framework, web framewwork"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap&family=Noto+Sans+SC:wght@100..900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" /> 
+        <link rel="stylesheet" href="/style/docs/main.css"/>
+        <link rel="icon" type="image/x-icon" href="/asset/aj-docs/logo.ico"/>
+        <script src="/asset/docs/js/common.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div>
+                <div class="links">
+                    <a href="/aj-util/cn">🏠 首页</a>
+                    | ⚙️ 源码:
+                    <a target="_blank" href="https://github.com/lightweight-component/aj-util">Github</a>/<a target="_blank" href="https://gitcode.com/lightweight-component/SqlMan/overview">Gitcode</a>
+                   | <a  href="/aj-util">英语版本</a>
+                </div>
+                <h1>
+                    <img src="/asset/aj-docs/logo.png" style="vertical-align: middle;height: 45px;margin-bottom: 6px;" /> 
+                    AJ Utils
+                </h1>
+                <h3>小型、干净、简单的 Java 工具库
+                </h3>
+            </div>
+        </nav>
+        <div>
+            <menu>
+                
+                <ul>
+                    <li class="selected">
+                        <a href="/aj-util/cn">首页</a>
+                    </li>
+                </ul>
+                <h3>Common 常用模块</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/common/BytesHelper-cn/">BytesHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/ConvertBasicValue-cn/">ConvertBasicValue</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EnumsUtil-cn/">EnumsUtil</a>
+                    </li>
+                    <li class="data">
+                        <a href="/aj-util/common/RandomTools-cn/">RandomTools</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/RegExpUtils-cn/">RegExpUtils</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/XmlHelper-cn/">XmlHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/MessageDigestHelper-cn/">MessageDigestHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/common/EncodeTools-cn/">EncodeTools</a>
+                    </li>
+                </ul>
+                <h3>Input/Output 输入/输出</h3>
+                <ul>
+                    <li class="data">
+                        <a href="/aj-util/io/FileHelper-cn/">FileHelper</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/Resources-cn/">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/io/StreamHelper-cn/">StreamHelper</a>
+                    </li>
+                </ul>
+                <h3>Reflection 反射</h3>
+                <ul>
+                    <li>
+                        <a href="/aj-util/reflect/Clazz-cn/">Clazz</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Methods-cn/">Methods</a>
+                    </li>
+                    <li>
+                        <a href="/aj-util/reflect/Types-cn/">Types</a>
+                    </li>
+                </ul>
+            </menu>
+            <article>
+                <h1>StreamHelper</h1>
+<p><code>StreamHelper</code> 类提供静态方法来对 Java 流执行常见操作。 它侧重于简化将输入流转换为字符串以及有效地在流之间复制数据。</p>
+<h2>方法</h2>
+<h3>1. <code>copyToString(InputStream in)</code></h3>
+<p>读取输入流并使用默认的 UTF-8 字符集将其转换为字符串。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>in</code>：要从中读取的输入流。 此方法不会关闭流。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 输入流的内容，以字符串形式表示。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">InputStream inputStream = new ByteArrayInputStream(&quot;你好，世界！&quot;.getBytes(StandardCharsets.UTF_8));
+String content = StreamHelper.copyToString(inputStream);
+System.out.println(content); // Output: 你好，世界！\n
+</code></pre>
+<h3>2. <code>copyToString(InputStream in, Charset encode)</code></h3>
+<p>读取输入流并使用指定的字符集将其转换为字符串。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>in</code>：要从中读取的输入流。 此方法不会关闭流。</li>
+<li><code>encode</code>：用于解码输入流的字符集。</li>
+</ul>
+</li>
+<li><strong>返回值：</strong> 输入流的内容，以字符串形式表示。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">InputStream inputStream = new ByteArrayInputStream(&quot;你好，世界！&quot;.getBytes(StandardCharsets.UTF_8));
+String content = StreamHelper.copyToString(inputStream, StandardCharsets.UTF_8);
+System.out.println(content); // Output: 你好，世界！\n
+</code></pre>
+<h3>3. <code>read(InputStream in, Charset encode, Consumer&lt;String&gt; fn)</code></h3>
+<p>逐行读取输入流，并将给定的 consumer 函数应用于每一行。</p>
+<ul>
+<li><strong>参数：</strong>
+<ul>
+<li><code>in</code>：要从中读取的输入流。 该方法内部会关闭流。</li>
+<li><code>encode</code>：用于解码输入流的字符集。</li>
+<li><code>fn</code>：一个 <code>Consumer</code>，它接受一个字符串（输入流中的一行）并执行一个动作。</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-java">InputStream inputStream = new ByteArrayInputStream(&quot;第一行\n第二行\n第三行&quot;.getBytes(StandardCharsets.UTF_8));
+StreamHelper.read(inputStream, StandardCharsets.UTF_8, line -&gt; {
+    System.out.println(&quot;行: &quot; + line);
+});
+// Output:
+// 行: 第一行
+// 行: 第二行
+// 行: 第三行
+</code></pre>
+<h2>单元测试示例</h2>
+<pre><code class="language-java">package com.ajaxjs.util.io;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class TestStreamHelper {
+    private InputStream inputStream;
+    private String testString;
+
+    @BeforeEach
+    public void setUp() {
+        testString = &quot;测试字符串&quot;;
+        inputStream = new ByteArrayInputStream(testString.getBytes(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    public void copyToString_WithDefaultCharset_ReturnsCorrectString() {
+        String result = StreamHelper.copyToString(inputStream);
+        assertEquals(testString + &quot;\n&quot;, result);
+    }
+
+    @Test
+    public void copyToString_WithSpecifiedCharset_ReturnsCorrectString() {
+        String result = StreamHelper.copyToString(inputStream, StandardCharsets.UTF_8);
+        assertEquals(testString + &quot;\n&quot;, result);
+    }
+}
+</code></pre>
+<p><strong>注意：</strong> <code>inputStream2Byte</code> 方法存在于测试代码中，但不存在于提供的 <code>StreamHelper</code> 类代码中。</p>
+<h2>结论</h2>
+<p><code>StreamHelper</code> 类提供了一种方便的方式来在 Java 中执行常见的流操作。 通过使用这些方法，您可以简化代码并避免编写重复的流 I/O 逻辑。</p>
+
+            </article>
+        </div>
+
+       <footer>
+            AJ-Util，开源框架 <a href="https://framework.ajaxjs.com" target="_blank">AJ-Framework</a> 的一部分。联系方式：
+            frank@ajaxjs.com，<a href="https://blog.csdn.net/zhangxin09" target="_blank">作者博客</a>
+            <br />
+            <br />
+            Copyright © 2025 Frank Cheung. All rights reserved.
+        </footer>
+    </body>
+</html>
