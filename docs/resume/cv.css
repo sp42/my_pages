@@ -44,7 +44,7 @@ p {
     line-height: 2;
     text-align: justify;
     margin: 8px 15px;
-    letter-spacing: 0px;
+    letter-spacing: 1px;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
@@ -67,7 +67,7 @@ h2 {
 
 li {
     font-size: 16px;
-    margin: 8px 30px;
+    margin: 8px 20px;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
@@ -77,6 +77,19 @@ li {
 dl {
     border-top: 2px solid lightgray;
     padding-top: 20px;
+}
+
+.t {
+    width: 150px;
+}
+
+td {
+    letter-spacing: 1px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px dotted lightgray;
 }
 
 dt {
@@ -98,11 +111,12 @@ dd {
 }
 
 dd li {
-    max-width: 610px;
+    max-width: 630px;
     margin: 0 0 4px 0;
 }
 
 @media print {
+
     /* 所有的打印样式在这里设置 */
     body {
         border: 0;
@@ -124,11 +138,13 @@ dd li {
         -ms-hyphens: auto;
         hyphens: auto;
     }
+
     html {
         background-color: white;
         padding: 0;
         margin: 0;
     }
+
     body {
         width: 100%;
         border: 0;
@@ -147,6 +163,7 @@ dd li {
     border: 2px solid gray;
     position: relative;
     margin: 0 5px;
+    display: none;
 }
 
 .external-link::before {
@@ -157,6 +174,8 @@ dd li {
     width: 6px;
     height: 6px;
     background-color: white;
+    display: none;
+
 }
 
 .external-link span {
@@ -167,6 +186,7 @@ dd li {
     left: 0px;
     font-weight: bold;
     font-size: 18px;
+    display: none;
 }
 
 .hide {
