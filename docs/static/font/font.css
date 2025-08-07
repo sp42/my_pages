@@ -1,0 +1,36 @@
+/* 新颖的英文字体，非常典雅美观 */
+@font-face {
+    font-family: 'DaxOT';
+    src: url('daxot/DaxWeb.eot');
+    src: url('daxot/DaxWeb.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DaxOT';
+    src: url('daxot/DaxWeb-Bold.eot');
+    src: url('daxot/DaxWeb-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: 'DaxOT', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.aj-text {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-align: justify;
+    text-indent: 2em;
+    line-height: 2;
+    letter-spacing: 1px;
+    /* word-wrap: break-word; */
+    text-rendering: optimizelegibility;
+    font-optical-sizing: auto;
+    hyphens: auto;
+}
