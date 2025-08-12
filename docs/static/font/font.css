@@ -16,7 +16,7 @@
 }
 
 body {
-    font-family: 'DaxOT', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'DaxOT',  Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
