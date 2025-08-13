@@ -1,0 +1,75 @@
+@import "reset.css";
+@import "../../font/font.css";
+
+a {
+    color: #666;
+    transition: color .4s ease-in-out;
+}
+
+a:visited,
+a:hover {
+    color: black;
+}
+
+.aj-text {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-align: justify;
+    text-indent: 2em;
+    line-height: 1.9;
+    letter-spacing: 1px;
+    /* word-wrap: break-word; */
+    text-rendering: optimizelegibility;
+    font-optical-sizing: auto;
+    hyphens: auto;
+}
+
+.aj-text p {
+    margin-bottom: 23px;
+}
+
+.aj-text h1 {
+    font-size: 23px;
+    margin: 30px 0;
+    letter-spacing: 3px;
+}
+
+.aj-form input,
+.aj-form button {
+    min-height: 30px;
+    border-radius: 3px;
+    color: #333;
+    letter-spacing: .3em;
+    outline: 0;
+    vertical-align: middle;
+}
+
+.aj-form input {
+    font-size: .9rem;
+    border: 1px solid #abadb3;
+    box-shadow: 1px 2px 3px #e5e5e5 inset;
+    box-sizing: border-box;
+    background-color: white;
+    transition: border-color ease-in-out 200ms;
+    padding: 4px;
+}
+
+.aj-form input:hover,
+.aj-form input:focus {
+    border-color: rgb(70, 70, 70);
+}
+
+.aj-form button {
+    font-size: .8rem;
+    padding: .4em 2.3em;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-bottom-color: #B4B4B4;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    background-color: lightgray;
+    background-repeat: repeat-x;
+    transition: background-image 0.5s linear 1s;
+    cursor: pointer;
+}

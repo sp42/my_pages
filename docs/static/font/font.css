@@ -34,3 +34,11 @@ body {
     font-optical-sizing: auto;
     hyphens: auto;
 }
+
+/* 楷体字体 */
+/* http://zenozeng.github.io/fonts.css/ */
+.aj-kaiti {
+    /*小于 21px 出现锯齿*/
+    font-size: 21px;
+    font-family: Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW-Kai", serif;
+}
