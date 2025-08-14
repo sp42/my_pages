@@ -16,24 +16,12 @@
 }
 
 body {
-    font-family: 'DaxOT',  Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+    font-family: 'DaxOT', Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.aj-text {
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 8px;
-    text-align: justify;
-    text-indent: 2em;
-    line-height: 2;
-    letter-spacing: 1px;
-    /* word-wrap: break-word; */
-    text-rendering: optimizelegibility;
-    font-optical-sizing: auto;
-    hyphens: auto;
-}
+.aj-chinese-title {}
 
 /* 楷体字体 */
 /* http://zenozeng.github.io/fonts.css/ */
