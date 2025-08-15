@@ -154,7 +154,6 @@ Vue.component('aj-adjust-font-size', {
     }
 });
 
-
 Vue.component('aj-process-line', {
     template: html`<div class="aj-process-line">
     <div class="process-line">
