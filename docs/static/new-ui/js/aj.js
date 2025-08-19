@@ -4,6 +4,19 @@
 if (!window.aj)
     aj = {};
 
+if (window.$)
+    alert('请不要使用 $ 符号作为全局变量名, 可能会导致冲突!');
+else {
+    window.$ = document.querySelector;
+    window.$$ = document.querySelectorAll;
+    Element.prototype.$ = Element.prototype.querySelector;
+    Element.prototype.$$ = Element.prototype.querySelectorAll;
+}
+
+aj.isDev =  () => {
+    return location.href.includes('localhost') || location.href.includes('127.0.0.1') || (aj.isDev.DEV_DOMAIN && location.href.includes(aj.isDev.DEV_DOMAIN));
+}
+
 ; (function () {
     function request(method, url, params, cb, cfg) {
         var xhr = new XMLHttpRequest();
@@ -77,7 +90,7 @@ if (!window.aj)
 
         request(method, url, params, cb, cfg);
     }
-    
+
     function json(method, url, params, cb, cfg) {
         if (!cfg)
             cfg = {};
