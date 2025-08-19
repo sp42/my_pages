@@ -100,6 +100,9 @@ aj.isDev =  () => {
         else
             Object.assign(cfg.header, { "Content-Type": "application/json" });
 
+        if(typeof params != 'string')
+            params = JSON.stringify(params);    
+
         request(method, url, params, cb, cfg);
     }
 

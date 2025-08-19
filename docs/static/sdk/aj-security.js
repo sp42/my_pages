@@ -25,10 +25,6 @@ aj.security = {};
         this.CAPTCHA_UUID = getUUID();
         this.captchaImg.src = `${this.imgApi}?uuid=${this.CAPTCHA_UUID}`;
     }
-     aj.security.Captcha.prototype.getUserInputCode = function () {
-        this.CAPTCHA_UUID = getUUID();
-        this.captchaImg.src = `${this.imgApi}?uuid=${this.CAPTCHA_UUID}`;
-    }
 
     function getUUID() {
         if (crypto && crypto.randomUUID)
