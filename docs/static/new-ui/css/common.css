@@ -25,13 +25,9 @@ a:hover {
 }
 
 .aj-text .chinese,
-.aj-text.chinese {
+.aj-text.chinese p {
     text-indent: 2em;
     letter-spacing: 1px;
-}
-
-.aj-text.chinese li {
-    text-indent: 0;
 }
 
 .aj-text p {
