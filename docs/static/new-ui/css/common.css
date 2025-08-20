@@ -30,8 +30,12 @@ a:hover {
     letter-spacing: 1px;
 }
 
+.aj-text.chinese li {
+    text-indent: 0;
+}
+
 .aj-text p {
-    margin:10px 0;
+    margin: 10px 0;
 }
 
 .aj-text h1 {
