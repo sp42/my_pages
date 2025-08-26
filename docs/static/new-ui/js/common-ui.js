@@ -231,6 +231,10 @@ Vue.component('aj-list', {
                 return [];
             },
         },
+        api: {
+            type: String,
+            required: true
+        }
     },
     data() {
         return {
@@ -275,10 +279,13 @@ Vue.component('aj-list', {
         },
         fetchDataFromMySQL() {
             const start = (this.currentPage - 1) * this.itemsPerPage;
+            const api = this.api.indexOf('?') === -1
+                ? `${this.api}?start=${start}&limit=${this.itemsPerPage}`
+                : `${this.api}&start=${start}&limit=${this.itemsPerPage}`;
 
-            aj.xhr.get(`https://iam.ajaxjs.com/iam/common_api/user_login_log/page?start=${start}&limit=${this.itemsPerPage}`, (j) => {
-                this.data = j.data.rows;
-                this.total = j.data.total;
+            aj.xhr.get(api, (j) => {
+                this.data = j.data.list;
+                this.total = j.data.totalCount;
             });
         },
     },
@@ -354,7 +361,7 @@ Vue.component('aj-file-upload', {
         value: {
             handler(newVal) {
                 this.uploadedFile = newVal;
-                if (this.isImage && newVal) 
+                if (this.isImage && newVal)
                     this.previewUrl = typeof newVal === 'string' ? newVal : '';
             },
             immediate: true
