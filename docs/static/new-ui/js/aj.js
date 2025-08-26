@@ -162,5 +162,35 @@ aj.isDev =  () => {
     }
 })();
 
+/**
+ * 日期格式化
+ * @author meizz
+ * @param date  日期，必须为 Date 类型
+ * @param fmt   格式模板
+ * @returns 格式化后的字符串
+ */
+aj.dateFormat = function (date, fmt) {
+    let o = {
+        "M+": date.getMonth() + 1,                  // 月份   
+        "d+": date.getDate(),                       // 日   
+        "h+": date.getHours(),                      // 小时   
+        "m+": date.getMinutes(),                    // 分   
+        "s+": date.getSeconds(),                    // 秒   
+        "q+": Math.floor((date.getMonth() + 3) / 3),// 季度   
+        "S": date.getMilliseconds()                 // 毫秒   
+    };
+
+    if (/(y+)/.test(fmt))
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) {
+            let obj = (RegExp.$1.length == 1) ? o[k] : ("00" + o[k]).substr(("" + o[k]).length);
+            fmt = fmt.replace(RegExp.$1, obj);
+        }
+
+    return fmt;
+}
+
 // VS Code 高亮 HTML 用
 var html = String;

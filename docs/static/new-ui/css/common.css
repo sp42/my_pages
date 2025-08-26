@@ -41,8 +41,9 @@ a:hover {
 }
 
 /*-------------------- Input/Button CSS --------------------*/
-.aj-form input:not([type="radio"]):not([type="checkbox"]),
-.aj-form button {
+.aj-form input:not([type="radio"]):not([type="checkbox"]):not(.exclude),
+.aj-form textarea,
+.aj-form button:not(.exclude) {
     min-height: 28px;
     border-radius: 3px;
     color: #333;
@@ -51,7 +52,8 @@ a:hover {
     vertical-align: middle;
 }
 
-.aj-form input:not([type="radio"]):not([type="checkbox"]) {
+.aj-form textarea,
+.aj-form input:not([type="radio"]):not([type="checkbox"]):not(.exclude) {
     font-size: .9rem;
     border: 1px solid #abadb3;
     box-shadow: 1px 2px 3px #e5e5e5 inset;
@@ -61,12 +63,14 @@ a:hover {
     padding: 4px;
 }
 
-.aj-form input:not([type="radio"]):not([type="checkbox"]):hover,
-.aj-form input:not([type="radio"]):not([type="checkbox"]):focus {
+.aj-form textarea:hover,
+.aj-form textarea:focus,
+.aj-form input:not([type="radio"]):not([type="checkbox"]):not(.exclude):hover,
+.aj-form input:not([type="radio"]):not([type="checkbox"]):not(.exclude):focus {
     border-color: rgb(70, 70, 70);
 }
 
-.aj-form button {
+.aj-form button:not(.exclude) {
     font-size: .8rem;
     cursor: pointer;
     padding: .4em 2.3em;
@@ -81,25 +85,25 @@ a:hover {
     transition: background-image 0.5s linear 1s;
 }
 
-.aj-form button img {
+.aj-form button:not(.exclude) img {
     vertical-align: middle;
 }
 
-.aj-form button:hover {
+.aj-form button:not(.exclude):hover {
     color: black;
     border-color: #a6a6a6;
 }
 
-.aj-form button:active {
+.aj-form button:not(.exclude):active {
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
     border-color: #8c8c8c;
 }
 
-.aj-form button:focus {
+.aj-form button:not(.exclude):focus {
     border-color: #999999;
 }
 
-.aj-form button:hover {
+.aj-form button:not(.exclude):hover {
     background-position: 0px -10px;
 }
 
