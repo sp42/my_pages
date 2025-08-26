@@ -209,7 +209,7 @@ Vue.component('aj-list', {
                 <tr v-for="(item) in data" :key="item.id">
                     <slot :data="item"></slot>
                 </tr>
-            <tbody>
+            </tbody>
         </table>
      <ul class="pager">
         <li :class="{disabled: currentPage === 1}">
