@@ -177,17 +177,10 @@ Vue.component('aj-process-line', {
         };
     },
     methods: {
-        /**
-         *
-         * @param i
-         */
         go(i) {
             this.current = i;
         },
 
-        /**
-         *
-         */
         perv() {
             let perv = this.current - 1;
             if (perv < 0) perv = this.items.length - 1;
@@ -195,9 +188,6 @@ Vue.component('aj-process-line', {
             this.go(perv);
         },
 
-        /**
-         *
-         */
         next() {
             let next = this.current + 1;
             if (this.items.length == next) next = 0; // 循环
@@ -238,7 +228,7 @@ Vue.component('aj-list', {
         items: {
             type: Array,
             default() {
-                return ["Step 1", "Step 2", "Step 3"];
+                return [];
             },
         },
     },
@@ -272,7 +262,6 @@ Vue.component('aj-list', {
             if (this.currentPage > 1)
                 // this.currentPage -= 1;
                 this.setPageNo(this.currentPage - 1);
-
         },
         goToNextPage() {
             if (this.currentPage < this.totalPages)
@@ -290,10 +279,157 @@ Vue.component('aj-list', {
             aj.xhr.get(`https://iam.ajaxjs.com/iam/common_api/user_login_log/page?start=${start}&limit=${this.itemsPerPage}`, (j) => {
                 this.data = j.data.rows;
                 this.total = j.data.total;
-            }, new aj.aj_iam.Sdk().getAuthHeader());
+            });
         },
     },
     mounted() {
         this.fetchDataFromMySQL();
     },
+});
+
+Vue.component('aj-file-upload', {
+    template: html`<div class="aj-file-upload">
+    <!-- 上传区域 -->
+    <div v-if="!uploadedFile && !previewUrl" class="upload-area" @dragover="handleDragOver" @dragleave="handleDragLeave"
+      @drop="handleDrop" :class="{ 'drag-over': isDragging }" @click="triggerFileInput"
+    >
+      <p>点击或拖拽文件到此处上传</p>
+      <input type="file" ref="fileInput" :multiple="multiple" :accept="accept" @change="handleFileSelect" style="display: none" />
+    </div>
+
+    <!-- 图片预览（仅当是图片上传时显示） -->
+    <div v-if="isImage && (previewUrl || uploadedFile)" class="image-preview">
+      <img :src="previewUrl || uploadedFile" alt="预览" />
+      <div class="preview-actions">
+        <button @click="removeFile">删除</button>
+        <button v-if="!uploadedFile" @click="triggerFileInput">更换</button>
+      </div>
+      <p v-if="selectedFile" class="file-size">大小: {{ formatFileSize(selectedFile.size) }}</p>
+    </div>
+
+    <!-- 已上传文件信息（非图片或未启用预览时） -->
+    <div v-if="!isImage && uploadedFile" class="file-info">
+      <p><strong>已上传：</strong>{{ getFileName(uploadedFile) }}</p>
+      <p v-if="selectedFile" class="file-size">大小: {{ formatFileSize(selectedFile.size) }}</p>
+      <button @click="removeFile">删除</button>
+    </div>
+
+    <!-- 上传按钮（如果尚未上传） -->
+    <button v-if="selectedFile && !uploadedFile" @click="upload" class="upload-btn">
+      上传
+    </button>
+  </div>`,
+    props: {
+        // 是否切换为图片上传模式
+        isImage: {
+            type: Boolean,
+            default: false
+        },
+        // 支持多文件
+        multiple: {
+            type: Boolean,
+            default: false
+        },
+        // 文件类型限制（如 image/*, .pdf 等）
+        accept: {
+            type: String,
+            default: ''
+        },
+        // v-model 绑定的值（上传成功后的文件路径或对象）
+        value: {
+            type: [String, Object, Array],
+            default: null
+        }
+    },
+    data() {
+        return {
+            selectedFile: null,      // 本地选中的文件
+            uploadedFile: null,      // 已上传的文件（可以是 URL 或对象）
+            previewUrl: '',          // 本地图片预览 URL
+            isDragging: false        // 拖拽状态
+        };
+    },
+    watch: {
+        // 监听 v-model 的 value 变化（外部设置已上传文件）
+        value: {
+            handler(newVal) {
+                this.uploadedFile = newVal;
+                if (this.isImage && newVal) 
+                    this.previewUrl = typeof newVal === 'string' ? newVal : '';
+            },
+            immediate: true
+        }
+    },
+    methods: {
+        triggerFileInput() {
+            this.$refs.fileInput.click();
+        },
+        handleDragOver(e) {
+            e.preventDefault();
+            this.isDragging = true;
+        },
+        handleDragLeave() {
+            this.isDragging = false;
+        },
+        handleDrop(e) {
+            e.preventDefault();
+            this.isDragging = false;
+            const files = e.dataTransfer.files;
+            this.processFiles(files);
+        },
+        handleFileSelect(e) {
+            const files = e.target.files;
+            this.processFiles(files);
+        },
+        processFiles(files) {
+            if (!files.length) return;
+
+            const file = files[0]; // 单文件为主，multiple 可扩展
+
+            // 检查是否为图片且需要预览
+            if (this.isImage && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.previewUrl = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            this.selectedFile = file;
+            this.uploadedFile = null; // 清除已上传状态
+            this.$emit('input', null); // 清空 v-model
+        },
+        removeFile() {
+            this.selectedFile = null;
+            this.uploadedFile = null;
+            this.previewUrl = '';
+            this.$refs.fileInput.value = ''; // 清空 input
+            this.$emit('input', null);
+        },
+        upload() {
+            if (!this.selectedFile) return;
+
+            // 这里模拟上传，实际应替换为 axios 等请求
+            const formData = new FormData();
+            formData.append('file', this.selectedFile);
+
+            // 模拟上传成功（实际使用中替换为真实请求）
+            setTimeout(() => {
+                const uploadedUrl = URL.createObjectURL(this.selectedFile); // 模拟返回 URL
+                this.uploadedFile = uploadedUrl;
+                this.$emit('input', uploadedUrl); // v-model 更新
+                this.$emit('uploaded', uploadedUrl); // 触发上传完成事件
+            }, 1000);
+        },
+        formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        },
+        getFileName(file) {
+            return typeof file === 'object' ? file.name : file;
+        }
+    }
 });
