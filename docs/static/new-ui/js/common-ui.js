@@ -294,6 +294,7 @@ Vue.component('aj-list', {
     },
 });
 
+
 Vue.component('aj-file-upload', {
     template: html`<div class="aj-file-upload">
     <!-- 上传区域 -->
@@ -309,7 +310,9 @@ Vue.component('aj-file-upload', {
       <img :src="previewUrl || uploadedFile" alt="预览" />
       <div class="preview-actions">
         <button class="exclude" @click="removeFile">删除</button>
-        <button class="exclude" v-if="!uploadedFile" @click="triggerFileInput">更换</button>
+        <!-- <button class="exclude" v-if="!uploadedFile" @click="triggerFileInput">更换</button> -->
+        <!-- 上传按钮（如果尚未上传） -->
+        <button v-if="selectedFile && !uploadedFile" @click="upload" class="exclude">上传</button>
       </div>
       <p v-if="selectedFile" class="file-size">大小: {{ formatFileSize(selectedFile.size) }}</p>
     </div>
@@ -320,11 +323,6 @@ Vue.component('aj-file-upload', {
       <p v-if="selectedFile" class="file-size">大小: {{ formatFileSize(selectedFile.size) }}</p>
       <button @click="removeFile">删除</button>
     </div>
-
-    <!-- 上传按钮（如果尚未上传） -->
-    <button v-if="selectedFile && !uploadedFile" @click="upload" class="exclude upload-btn">
-      上传
-    </button>
   </div>`,
     props: {
         // 是否切换为图片上传模式
