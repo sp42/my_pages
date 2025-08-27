@@ -7,6 +7,10 @@
     <title>Demo page of the AJ library</title>
     <link rel="stylesheet" href="common.css" />
     <link rel="icon" type="image/x-icon" href="../../../aj-logo/logo.ico" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/common-ui.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="../less/widgets.less" />
+    <script src="../../libs/less.js"></script>
     <style>
         section {
             margin: 5% 0;
@@ -240,6 +244,51 @@
                 </tr>
             </table>
         </div>
+    </div>
+
+    <div style="margin: 10% auto; width:1700px;clear: both;">
+        <div class="component-demo aj-form">
+            <br />
+            <br />
+            <br />
+            <h2>遮罩层、对话框</h2>
+            <aj-layer v-if="isShowLayer">
+                <br />
+                <br />
+                故天将降大任于是人也必先苦其心智劳其筋骨饿其体肤空乏其身行弗乱其所为所以动心忍性曾益其所不能
+                <br />
+                <br />
+                <div align="center">
+                    <button @click="isShowLayer = fasle">Close</button>
+                </div>
+            </aj-layer>
+            <button @click="isShowLayer = true">Show Mask</button> &nbsp;
+            <button @click="isConfirm = true">Show Confirm</button>
+            <aj-confirm title="请确认" message="你确认要删除吗？" v-if="isConfirm" state="isConfirm"
+                :confirm-handler="confirmHandler" />
+        </div>
+        <script>
+            const { createApp } = Vue;
+            const app = createApp({
+                data() {
+                    return {
+                        isShowLayer: false,
+                        isConfirm: false,
+                    }
+                },
+                methods: {
+                    confirmHandler() {
+                        alert('Confirmed!');
+                    }
+                }
+            });
+            // 注册组件（局部注册，推荐）
+            app.component('aj-layer', aj.layer);
+            app.component('aj-confirm', aj.confirm);
+
+            // 挂载到页面
+            app.mount('.component-demo');
+        </script>
     </div>
 </body>
 

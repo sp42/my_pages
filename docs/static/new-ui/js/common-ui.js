@@ -1,13 +1,18 @@
-Vue.component('aj-layer', {
+if (!window.aj)
+    aj = {};
+
+var html = String;
+
+aj.layer = {
     template: html`<div class="modal-mask">
       <div class="modal-container">
         <!-- 弹出层内容 -->
         <slot></slot>
       </div>
   </div>`
-});
+};
 
-Vue.component('aj-confirm', {
+aj.confirm = {
     template: html`<div class="modal-mask">
 	      <div class="modal-container comfirm">
 	        	<h2>{{ title }}</h2>
@@ -48,7 +53,6 @@ Vue.component('aj-confirm', {
                 this.$parent.confirm();
 
             this.cancel();
-
         },
         cancel() {
             if (this.state)
@@ -57,12 +61,12 @@ Vue.component('aj-confirm', {
                 this.$parent.isShow = false;
         }
     }
-});
+};
 
 /**
  * 轮播图（透明渐变）
  */
-Vue.component('aj-carousel', {
+aj.carousel = {
     template: html`<div class="carousel">
     <div class="carousel-inner">
         <div class="carousel-item" v-for="(slide, index) in items" :key="index" :class="{ active: index === currentIndex }">
@@ -119,42 +123,42 @@ Vue.component('aj-carousel', {
                 clearInterval(this.intervalId);
         }
     }
-});
+};
 
-/**
- * 调整正文字体大小
- */
-Vue.component('aj-adjust-font-size', {
-    template: `<div class="aj-adjust-font-size">
-    <span>字体大小</span>
-    <ul @click="onClk">
-      <li><label><input type="radio" name="fontSize" /> 小</label></li>
-      <li><label><input type="radio" name="fontSize" /> 中</label></li>
-      <li><label><input type="radio" name="fontSize" /> 大</label></li>
-    </ul>
-  </div>`,
-    props: {
-        articleTarget: { type: String, default: "article p" }, // 正文所在的位置，通过 CSS Selector 定位
-    },
-    methods: {
-        onClk(ev) {
-            let el = ev.target;
-            let setFontSize = (fontSize) => {
-                document.body.querySelectorAll(this.$props.articleTarget).forEach((p) => (p.style.fontSize = fontSize));
-            };
+// /**
+//  * 调整正文字体大小
+//  */
+// Vue.component('aj-adjust-font-size', {
+//     template: `<div class="aj-adjust-font-size">
+//     <span>字体大小</span>
+//     <ul @click="onClk">
+//       <li><label><input type="radio" name="fontSize" /> 小</label></li>
+//       <li><label><input type="radio" name="fontSize" /> 中</label></li>
+//       <li><label><input type="radio" name="fontSize" /> 大</label></li>
+//     </ul>
+//   </div>`,
+//     props: {
+//         articleTarget: { type: String, default: "article p" }, // 正文所在的位置，通过 CSS Selector 定位
+//     },
+//     methods: {
+//         onClk(ev) {
+//             let el = ev.target;
+//             let setFontSize = (fontSize) => {
+//                 document.body.querySelectorAll(this.$props.articleTarget).forEach((p) => (p.style.fontSize = fontSize));
+//             };
 
-            if (el.tagName == "LABEL" || el.tagName == "INPUT") {
-                if (el.tagName != "LABEL") el = el.parentNode;
+//             if (el.tagName == "LABEL" || el.tagName == "INPUT") {
+//                 if (el.tagName != "LABEL") el = el.parentNode;
 
-                if (el.innerHTML.indexOf("大") != -1) setFontSize("14pt");
-                else if (el.innerHTML.indexOf("中") != -1) setFontSize("10.5pt");
-                else if (el.innerHTML.indexOf("小") != -1) setFontSize("9pt");
-            }
-        }
-    }
-});
+//                 if (el.innerHTML.indexOf("大") != -1) setFontSize("14pt");
+//                 else if (el.innerHTML.indexOf("中") != -1) setFontSize("10.5pt");
+//                 else if (el.innerHTML.indexOf("小") != -1) setFontSize("9pt");
+//             }
+//         }
+//     }
+// });
 
-Vue.component('aj-process-line', {
+aj.processLine = {
     template: html`<div class="aj-process-line">
     <div class="process-line">
       <div v-for="(item, index) in items" :key="index" :class="{current: index == current, done: index < current}">
@@ -195,9 +199,9 @@ Vue.component('aj-process-line', {
             this.go(next);
         },
     },
-});
+};
 
-Vue.component('aj-list', {
+aj.list = {
     template: html`<div class="aj-list">
         <table align="center">
             <thead>
@@ -292,15 +296,13 @@ Vue.component('aj-list', {
     mounted() {
         this.fetchDataFromMySQL();
     },
-});
+};
 
-
-Vue.component('aj-file-upload', {
+aj.fileUpload = {
     template: html`<div class="aj-file-upload">
     <!-- 上传区域 -->
     <div v-if="!uploadedFile && !previewUrl" class="upload-area" @dragover="handleDragOver" @dragleave="handleDragLeave"
-      @drop="handleDrop" :class="{ 'drag-over': isDragging }" @click="triggerFileInput"
-    >
+      @drop="handleDrop" :class="{ 'drag-over': isDragging }" @click="triggerFileInput">
       <p>点击或拖拽文件到此处上传</p>
       <input type="file" ref="fileInput" :multiple="multiple" :accept="accept" @change="handleFileSelect" style="display: none" />
     </div>
@@ -437,4 +439,4 @@ Vue.component('aj-file-upload', {
             return typeof file === 'object' ? file.name : file;
         }
     }
-});
+};
