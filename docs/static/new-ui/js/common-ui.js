@@ -125,39 +125,6 @@ aj.carousel = {
     }
 };
 
-// /**
-//  * 调整正文字体大小
-//  */
-// Vue.component('aj-adjust-font-size', {
-//     template: `<div class="aj-adjust-font-size">
-//     <span>字体大小</span>
-//     <ul @click="onClk">
-//       <li><label><input type="radio" name="fontSize" /> 小</label></li>
-//       <li><label><input type="radio" name="fontSize" /> 中</label></li>
-//       <li><label><input type="radio" name="fontSize" /> 大</label></li>
-//     </ul>
-//   </div>`,
-//     props: {
-//         articleTarget: { type: String, default: "article p" }, // 正文所在的位置，通过 CSS Selector 定位
-//     },
-//     methods: {
-//         onClk(ev) {
-//             let el = ev.target;
-//             let setFontSize = (fontSize) => {
-//                 document.body.querySelectorAll(this.$props.articleTarget).forEach((p) => (p.style.fontSize = fontSize));
-//             };
-
-//             if (el.tagName == "LABEL" || el.tagName == "INPUT") {
-//                 if (el.tagName != "LABEL") el = el.parentNode;
-
-//                 if (el.innerHTML.indexOf("大") != -1) setFontSize("14pt");
-//                 else if (el.innerHTML.indexOf("中") != -1) setFontSize("10.5pt");
-//                 else if (el.innerHTML.indexOf("小") != -1) setFontSize("9pt");
-//             }
-//         }
-//     }
-// });
-
 aj.processLine = {
     template: html`<div class="aj-process-line">
     <div class="process-line">
