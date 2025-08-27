@@ -311,7 +311,7 @@ aj.fileUpload = {
     <div v-if="isImage && (previewUrl || uploadedFile)" class="image-preview">
       <img :src="previewUrl || uploadedFile" alt="预览" />
       <div class="preview-actions">
-        <button class="exclude" @click="removeFile">删除</button>
+        <button class="exclude" @click="removeFile">删除</button> &nbsp;
         <!-- <button class="exclude" v-if="!uploadedFile" @click="triggerFileInput">更换</button> -->
         <!-- 上传按钮（如果尚未上传） -->
         <button v-if="selectedFile && !uploadedFile" @click="upload" class="exclude">上传</button>
